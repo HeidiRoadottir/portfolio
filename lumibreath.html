@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Knowable – Heidi Lindenskov Róadóttir</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+  line-height: 1.7;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 16px 60px;
+}
+
+a {
+  color: #7dd3fc;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back {
+  font-size: .9rem;
+  opacity: .85;
+}
+
+h1 {
+  margin-bottom: 6px;
+}
+
+.meta {
+  color: #9ca3af;
+  font-size: .9rem;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #0f172a;
+  border: 1px solid rgba(148,163,184,.25);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.pill {
+  display: inline-block;
+  font-size: .8rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.4);
+  margin-right: 4px;
+}
+
+footer {
+  margin-top: 40px;
+  color: #9ca3af;
+  font-size: .8rem;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+<main>
+
+  <div class="header">
+    <div>
+      <a class="back" href="index.html">← Back to Projects</a>
+    </div>
+  </div>
+
+  <h1>Knowable – Trustpilot Review Analysis Platform</h1>
+
+  <div class="meta">
+    Bachelor Project · NLP · R · Data Analysis
+  </div>
+
+  <div class="card">
+    <h3>Overview</h3>
+    <p>
+      Knowable challenges the idea that star ratings alone reflect customer experience.
+      I built a data pipeline that scrapes Trustpilot reviews, applies NLP sentiment
+      and topic modelling, and presents deeper insights into what customers actually say.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>My Role</h3>
+    <ul>
+      <li>Concept development</li>
+      <li>Data pipeline development in R</li>
+      <li>Web scraping & data cleaning</li>
+      <li>Sentiment and topic modelling</li>
+      <li>Prototype of insight presentation</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Tools & Methods</h3>
+    <span class="pill">R</span>
+    <span class="pill">NLP</span>
+    <span class="pill">Sentiment Analysis</span>
+    <span class="pill">Topic Modelling</span>
+    <span class="pill">Web Scraping</span>
+  </div>
+
+  <div class="card">
+    <h3>Outcome</h3>
+    <p>
+      The project demonstrated how text-based review analysis reveals deeper insights than ratings,
+      supporting smarter decisions for both companies and consumers.
+    </p>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+</main>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
