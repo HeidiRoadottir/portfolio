@@ -6,110 +6,305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --accent: #1f4b82;
+      --bg: #070b10;
+      --bg-alt: #0f1724;
+      --card: #111827;
+      --card-soft: #111827f2;
+      --accent: #7dd3fc;
+      --accent-soft: rgba(125, 211, 252, 0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --pill-bg: #020617;
     }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
+      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 0 16px 60px;
-      line-height: 1.6;
-      color: #222;
-      background: #fafafa;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020617 60%, #020617 100%);
+      color: var(--text-main);
     }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 18px 60px;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to right, rgba(15,23,42,0.96), rgba(15,23,42,0.94));
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+    }
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nav-brand {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: rgba(125,211,252,0.3);
+      background: rgba(15,23,42,0.9);
+    }
+
+    /* HERO */
     header {
-      margin-bottom: 2.5rem;
+      padding: 42px 0 26px;
+    }
+    .hero {
+      display: grid;
+      gap: 24px;
+    }
+    @media (min-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+        align-items: center;
+      }
+    }
+
+    .hero-tag {
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
     h1 {
-      font-size: 2.3rem;
-      margin-bottom: 0.3rem;
+      margin: 0 0 6px;
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
     }
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 2.4rem;
-      margin-bottom: 0.8rem;
+    .hero-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      line-height: 1.7;
     }
-    h3 {
-      margin: 0 0 0.25rem;
-      font-size: 1.1rem;
+    .hero-highlight {
+      display: inline-block;
+      background: linear-gradient(120deg, rgba(125,211,252,0.16), rgba(129,140,248,0.12));
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 0.85rem;
+      margin-top: 12px;
     }
-    p {
-      margin: 0.1rem 0 0.6rem;
-    }
-    .tagline {
-      color: #555;
-      max-width: 32rem;
+
+    .hero-pills {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .pill {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 2px 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid #ddd;
-      margin-right: 4px;
-      margin-bottom: 4px;
+      border: 1px solid var(--border-subtle);
+      background: var(--pill-bg);
+      color: var(--text-muted);
       white-space: nowrap;
     }
-    .pill--strong {
-      border-color: var(--accent);
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.8;
+    }
+    .pill--accent {
+      border-color: rgba(125,211,252,0.45);
+      background: var(--accent-soft);
       color: var(--accent);
-      font-weight: 500;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(148,163,184,0.22);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
+    .hero-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+    .hero-card p {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .hero-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(148,163,184,0.22);
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-top: 40px;
+    }
+    section:nth-of-type(odd) {
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
+      margin-left: -18px;
+      margin-right: -18px;
+      padding: 24px 18px 30px;
+      border-top: 1px solid rgba(15,23,42,1);
+      border-bottom: 1px solid rgba(15,23,42,1);
+    }
+    section:nth-of-type(odd) > * {
+      max-width: 1040px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    h2 {
+      margin: 0 0 4px;
+      font-size: 1.3rem;
     }
     .section-intro {
       max-width: 40rem;
-      color: #555;
-      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      margin: 0 0 18px;
     }
-    .projects {
+
+    /* PROJECTS */
+    .projects-grid {
       display: grid;
-      gap: 1.4rem;
+      gap: 18px;
     }
-    @media (min-width: 800px) {
-      .projects {
+    @media (min-width: 900px) {
+      .projects-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
     .project {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-      border: 1px solid #eee;
+      background: var(--card-soft);
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 35px rgba(15,23,42,0.75);
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform 160ms ease-out,
+        box-shadow 160ms ease-out,
+        border-color 160ms ease-out,
+        background 160ms ease-out;
+    }
+    .project::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(125,211,252,0.14), transparent 55%);
+      opacity: 0;
+      transition: opacity 180ms ease-out;
+      pointer-events: none;
+    }
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 45px rgba(15,23,42,0.92);
+      border-color: rgba(125,211,252,0.45);
+      background: #020617;
+    }
+    .project:hover::before {
+      opacity: 1;
+    }
+
+    .project h3 {
+      margin: 0 0 4px;
+      font-size: 1.02rem;
     }
     .project-meta {
       font-size: 0.8rem;
-      color: #777;
-      margin-bottom: 0.35rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
     .role {
-      font-size: 0.85rem;
-      color: #444;
-      margin-bottom: 0.35rem;
+      font-size: 0.84rem;
+      color: #cbd5f5;
+      margin-bottom: 6px;
+    }
+    .project p {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin: 0 0 10px;
     }
     .methods {
-      margin-bottom: 0.4rem;
+      margin-top: 2px;
     }
     .methods .pill {
-      background: #f6f6f6;
+      font-size: 0.75rem;
+      background: rgba(15,23,42,0.9);
     }
-    .layout-split {
-      display: grid;
-      gap: 1rem 2rem;
+
+    /* FOCUS */
+    .focus-block {
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(145deg, rgba(15,23,42,1), rgba(8,15,28,1));
+      padding: 18px 18px 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
+      font-size: 0.93rem;
+      color: var(--text-muted);
     }
-    @media (min-width: 900px) {
-      .layout-split {
-        grid-template-columns: 2fr 1.2fr;
-      }
+    .focus-block strong {
+      color: var(--accent);
     }
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.3rem 0 0;
-      font-size: 0.95rem;
+
+    /* FOOTER */
+    footer {
+      margin-top: 40px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148,163,184,0.25);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
     }
-    .contact-list li {
-      margin-bottom: 0.2rem;
-    }
+
     a {
       color: var(--accent);
       text-decoration: none;
@@ -117,185 +312,241 @@
     a:hover {
       text-decoration: underline;
     }
-    footer {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: #777;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="layout-split">
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">Heidi · Portfolio</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <header id="about">
+      <div class="hero">
+        <div>
+          <div class="hero-tag">Digital transformation · UX · data</div>
+          <h1>Heidi Lindenskov Róadóttir</h1>
+          <p class="hero-subtitle">
+            I move between <strong>data analysis</strong>, <strong>interaction & critical design</strong> and
+            <strong>automation</strong>. My work often sits where messy, real-world practice meets digital
+            systems – from children’s book clubs and football clubs to museums and hidden disability contexts.
+          </p>
+          <span class="hero-highlight">
+            Currently finishing a Master in Digital Transformation with a focus on design, automation and
+            organisational change.
+          </span>
+          <div class="hero-pills">
+            <span class="pill pill--accent"><span class="pill-dot"></span>Digital transformation</span>
+            <span class="pill"><span class="pill-dot"></span>UX & interaction design</span>
+            <span class="pill"><span class="pill-dot"></span>Data & analytics</span>
+            <span class="pill"><span class="pill-dot"></span>RPA & automation</span>
+            <span class="pill"><span class="pill-dot"></span>Critical & speculative design</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h2>What I enjoy working on</h2>
+          <p>
+            Connecting <strong>qualitative insights</strong> and <strong>quantitative structures</strong>.
+            Turning complex worlds – like membership systems, disability symbols or match data – into
+            something that is easier to understand and act on.
+          </p>
+          <p>
+            I like projects where technology is not just efficient, but also <strong>humane, situated
+            and slightly provocative</strong>.
+          </p>
+          <div class="hero-meta">
+            <div>Fluent in R, Python basics, prototyping, UX methods, research-through-design and Power Automate.</div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- PROJECTS -->
+    <section id="projects">
       <div>
-        <h1>Heidi Lindenskov Róadóttir</h1>
-        <p class="tagline">
-          Digital transformation student with a hybrid profile in <strong>UX & critical design</strong>,
-          <strong>data analysis</strong> and <strong>automation</strong>. I work across qualitative and
-          quantitative methods to explore how technology can support people, organisations and everyday life.
+        <div class="section-label">Selected work</div>
+        <h2>Projects</h2>
+        <p class="section-intro">
+          A mix of bachelor and master level work spanning NLP, sports analytics, critical design, tangible
+          interaction and RPA. Each project explores a different way of seeing – users, organisations, or data.
         </p>
-        <div style="margin-top: 0.6rem;">
-          <span class="pill pill--strong">Digital Transformation</span>
-          <span class="pill">UX & Interaction Design</span>
-          <span class="pill">Data & Analytics</span>
-          <span class="pill">RPA & Automation</span>
+
+        <div class="projects-grid">
+
+          <!-- Knowable -->
+          <article class="project">
+            <h3>Knowable – Trustpilot Review Analysis Platform</h3>
+            <p class="project-meta">Bachelor project · Data analysis, NLP & web scraping</p>
+            <p class="role"><strong>My role:</strong> Concept, data pipeline, text analysis and prototype.</p>
+            <p>
+              Knowable challenges the idea that a 1–5 star Trustpilot score fully reflects customer experience.
+              I built a web scraping and text analysis pipeline in R that collects reviews, runs sentiment and topic
+              modelling, and presents a richer overview of what customers actually say about a company.
+            </p>
+            <div class="methods">
+              <span class="pill">R</span>
+              <span class="pill">Web scraping</span>
+              <span class="pill">NLP</span>
+              <span class="pill">Sentiment analysis</span>
+              <span class="pill">Topic modelling</span>
+              <span class="pill">Shiny</span>
+            </div>
+          </article>
+
+          <!-- EchoGuide -->
+          <article class="project">
+            <h3>EchoGuide – Accessible Museum Companion</h3>
+            <p class="project-meta">Master project · UX, accessibility & iterative prototyping</p>
+            <p class="role"><strong>My role:</strong> Concept development, interaction design and prototype testing.</p>
+            <p>
+              EchoGuide explores how museums can be more inclusive for visitors with visual impairments and other needs.
+              Through several design iterations, we developed a mobile concept that uses audio guidance and recognition
+              to read out exhibition information and support independent navigation, with scalability to other audiences
+              such as children and dyslexic visitors.
+            </p>
+            <div class="methods">
+              <span class="pill">Design sprint</span>
+              <span class="pill">UX</span>
+              <span class="pill">Accessibility</span>
+              <span class="pill">Prototyping</span>
+              <span class="pill">p5.js</span>
+            </div>
+          </article>
+
+          <!-- LumiBreath -->
+          <article class="project">
+            <h3>LumiBreath – Interactive Breathing Lamp</h3>
+            <p class="project-meta">Digital Designer course · Tangible interaction & wellbeing</p>
+            <p class="role"><strong>My role:</strong> Co-design of concept, interaction and documentation.</p>
+            <p>
+              LumiBreath is a physical-digital lamp that guides users through calming breathing exercises using light
+              rhythms and motion. The project investigates how embodied interaction and everyday artefacts can support
+              stress reduction and emotional regulation, drawing on third-wave HCI and theories of perception and
+              embodiment.
+            </p>
+            <div class="methods">
+              <span class="pill">Interaction design</span>
+              <span class="pill">Embodied interaction</span>
+              <span class="pill">Physical prototyping</span>
+              <span class="pill">Arduino / hardware</span>
+            </div>
+          </article>
+
+          <!-- Det man ikke ser / Solsikkesnoren -->
+          <article class="project">
+            <h3>Det man ikke ser – Critical Design on the Sunflower Lanyard</h3>
+            <p class="project-meta">Master semester project · Critical & speculative design</p>
+            <p class="role"><strong>My role:</strong> Research, experiment design and critical reflection.</p>
+            <p>
+              This project investigates how the sunflower lanyard for hidden disabilities is interpreted in public space,
+              and how it can both support and stigmatise its wearers. Through critical and speculative design experiments,
+              we used prototypes as “social mirrors” to expose assumptions, the politics of staring, and the embodied
+              experience of being visibly marked as different.
+            </p>
+            <div class="methods">
+              <span class="pill">Critical design</span>
+              <span class="pill">Speculative design</span>
+              <span class="pill">Research-through-design</span>
+              <span class="pill">Stigma & disability studies</span>
+            </div>
+          </article>
+
+          <!-- Brøndby IF -->
+          <article class="project">
+            <h3>Brøndby IF – Data-Driven Football Analytics</h3>
+            <p class="project-meta">Bachelor project · Sports analytics & statistics</p>
+            <p class="role"><strong>My role:</strong> Data preparation, modelling and interpretation.</p>
+            <p>
+              In this project, we developed an Expected Goals (xG) model and a set of analytical tools to support
+              decision-making in Brøndby IF. Using detailed event data, we analysed shot quality, patterns of play
+              and player behaviour to show how data can complement football intuition with more systematic insight.
+            </p>
+            <div class="methods">
+              <span class="pill">R</span>
+              <span class="pill">Predictive modelling</span>
+              <span class="pill">Clustering</span>
+              <span class="pill">Sports analytics</span>
+              <span class="pill">Visualisation</span>
+            </div>
+          </article>
+
+          <!-- Barnabókaklubbin RPA -->
+          <article class="project">
+            <h3>RPA in Barnabókaklubbin – Automation in a Children’s Book Club</h3>
+            <p class="project-meta">Master project · Digital transformation & RPA</p>
+            <p class="role"><strong>My role:</strong> Interviews, process mapping, design of automation approach and evaluation.</p>
+            <p>
+              Barnabókaklubbin is a Faroese children’s book club with fragmented systems and highly manual administration.
+              This project investigates how Robotic Process Automation can reduce repetitive work while respecting
+              local practices and human judgement. We mapped membership workflows, assessed data quality and tested
+              a selective automation design using RPA as a supportive layer rather than a full replacement.
+            </p>
+            <div class="methods">
+              <span class="pill">Service blueprinting</span>
+              <span class="pill">RPA</span>
+              <span class="pill">Power Automate</span>
+              <span class="pill">Qualitative research</span>
+              <span class="pill">Digital transformation</span>
+            </div>
+          </article>
+
         </div>
       </div>
+    </section>
+
+    <!-- FOCUS -->
+    <section id="focus">
       <div>
+        <div class="section-label">How I think</div>
+        <h2>Focus & interests</h2>
+        <div class="focus-block">
+          <p>
+            Across my work I am especially interested in how <strong>data, automation and design meet in practice</strong>:
+            how organisations actually work, how people experience technology, and how we can design solutions that
+            respect context, embodiment and everyday life.
+          </p>
+          <p>
+            I enjoy working in the grey zones where things are “not quite clean”: partial legacy systems, hidden
+            disabilities, informal workarounds, cultural constraints. These places often reveal the most interesting
+            design questions – and the biggest risks if we automate without paying attention.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div>
+        <div class="section-label">Get in touch</div>
         <h2>Contact</h2>
-        <ul class="contact-list">
+        <p class="section-intro">
+          I am open to collaborations, thesis-related opportunities, and roles where you need someone who can
+          bridge data, design and organisational perspectives.
+        </p>
+        <ul class="focus-block" style="list-style:none; padding:14px 16px; margin:0; display:inline-block;">
           <li>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></li>
           <li>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin.com/in/your-profile</a></li>
           <li>Location: Faroe Islands / Denmark</li>
         </ul>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <section>
-    <h2>Selected projects</h2>
-    <p class="section-intro">
-      A selection of academic and exploratory projects spanning bachelor and master level work,
-      from data-driven analysis and automation to speculative and embodied interaction design.
-    </p>
-
-    <div class="projects">
-
-      <!-- Knowable -->
-      <article class="project">
-        <h3>Knowable – Trustpilot Review Analysis Platform</h3>
-        <p class="project-meta">Bachelor project · Data analysis, NLP & web scraping</p>
-        <p class="role"><strong>My role:</strong> Concept, data pipeline, text analysis and prototype.</p>
-        <p>
-          Knowable challenges the idea that a 1–5 star Trustpilot score fully reflects customer experience.
-          I built a web scraping and text analysis pipeline in R that collects reviews, runs sentiment and topic
-          modelling, and presents a richer overview of what customers actually say about a company.
-        </p>
-        <div class="methods">
-          <span class="pill">R</span>
-          <span class="pill">Web scraping</span>
-          <span class="pill">NLP</span>
-          <span class="pill">Sentiment analysis</span>
-          <span class="pill">Topic modelling</span>
-          <span class="pill">Shiny</span>
-        </div>
-      </article>
-
-      <!-- EchoGuide -->
-      <article class="project">
-        <h3>EchoGuide – Accessible Museum Companion</h3>
-        <p class="project-meta">Master project · UX, accessibility & iterative prototyping</p>
-        <p class="role"><strong>My role:</strong> Concept development, interaction design and prototype testing.</p>
-        <p>
-          EchoGuide explores how museums can be more inclusive for visitors with visual impairments and other needs.
-          Through several design iterations, we developed a mobile concept that uses audio guidance and recognition
-          to read out exhibition information and support independent navigation, with scalability to other audiences
-          such as children and dyslexic visitors.
-        </p>
-        <div class="methods">
-          <span class="pill">Design sprint</span>
-          <span class="pill">UX</span>
-          <span class="pill">Accessibility</span>
-          <span class="pill">Prototyping</span>
-          <span class="pill">p5.js</span>
-        </div>
-      </article>
-
-      <!-- LumiBreath -->
-      <article class="project">
-        <h3>LumiBreath – Interactive Breathing Lamp</h3>
-        <p class="project-meta">Digital Designer course · Tangible interaction & wellbeing</p>
-        <p class="role"><strong>My role:</strong> Co-design of concept, interaction and documentation.</p>
-        <p>
-          LumiBreath is a physical-digital lamp that guides users through calming breathing exercises using light
-          rhythms and motion. The project investigates how embodied interaction and everyday artefacts can support
-          stress reduction and emotional regulation, drawing on third-wave HCI and theories of perception and
-          embodiment.
-        </p>
-        <div class="methods">
-          <span class="pill">Interaction design</span>
-          <span class="pill">Embodied interaction</span>
-          <span class="pill">Physical prototyping</span>
-          <span class="pill">Arduino / hardware</span>
-        </div>
-      </article>
-
-      <!-- Det man ikke ser / Solsikkesnoren -->
-      <article class="project">
-        <h3>Det man ikke ser – Critical Design on the Sunflower Lanyard</h3>
-        <p class="project-meta">Master semester project · Critical & speculative design</p>
-        <p class="role"><strong>My role:</strong> Research, experiment design and critical reflection.</p>
-        <p>
-          This project investigates how the sunflower lanyard for hidden disabilities is interpreted in public space,
-          and how it can both support and stigmatise its wearers. Through critical and speculative design experiments,
-          we used prototypes as “social mirrors” to expose assumptions, the politics of staring, and the embodied
-          experience of being visibly marked as different.
-        </p>
-        <div class="methods">
-          <span class="pill">Critical design</span>
-          <span class="pill">Speculative design</span>
-          <span class="pill">Research-through-design</span>
-          <span class="pill">Stigma & disability studies</span>
-        </div>
-      </article>
-
-      <!-- Brøndby IF -->
-      <article class="project">
-        <h3>Brøndby IF – Data-Driven Football Analytics</h3>
-        <p class="project-meta">Bachelor project · Sports analytics & statistics</p>
-        <p class="role"><strong>My role:</strong> Data preparation, modelling and interpretation.</p>
-        <p>
-          In this project, we developed an Expected Goals (xG) model and a set of analytical tools to support
-          decision-making in Brøndby IF. Using detailed event data, we analysed shot quality, patterns of play
-          and player behaviour to show how data can complement football intuition with more systematic insight.
-        </p>
-        <div class="methods">
-          <span class="pill">R</span>
-          <span class="pill">Predictive modelling</span>
-          <span class="pill">Clustering</span>
-          <span class="pill">Sports analytics</span>
-          <span class="pill">Visualisation</span>
-        </div>
-      </article>
-
-      <!-- Barnabókaklubbin RPA -->
-      <article class="project">
-        <h3>RPA in Barnabókaklubbin – Automation in a Children’s Book Club</h3>
-        <p class="project-meta">Master project · Digital transformation & RPA</p>
-        <p class="role"><strong>My role:</strong> Interviews, process mapping, design of automation approach and evaluation.</p>
-        <p>
-          Barnabókaklubbin is a Faroese children’s book club with fragmented systems and highly manual administration.
-          This project investigates how Robotic Process Automation can reduce repetitive work while respecting
-          local practices and human judgement. We mapped membership workflows, assessed data quality and tested
-          a selective automation design using RPA as a supportive layer rather than a full replacement.
-        </p>
-        <div class="methods">
-          <span class="pill">Service blueprinting</span>
-          <span class="pill">RPA</span>
-          <span class="pill">Power Automate</span>
-          <span class="pill">Qualitative research</span>
-          <span class="pill">Digital transformation</span>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>Focus & interests</h2>
-    <p class="section-intro">
-      Across my work I am especially interested in how data, automation and design meet in practice:
-      how organisations actually work, how people experience technology, and how we can design
-      digital solutions that respect context, embodiment and everyday life.
-    </p>
-  </section>
-
-  <footer>
-    © <span id="year"></span> Heidi Lindenskov Róadóttir
-  </footer>
+    <footer>
+      © <span id="year"></span> Heidi Lindenskov Róadóttir · Built with GitHub Pages
+    </footer>
+  </main>
 
   <script>
-    // Small helper to always show the current year in the footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
