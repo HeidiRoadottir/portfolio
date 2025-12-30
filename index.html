@@ -445,7 +445,7 @@
     <div class="projects-grid">
 
       <!-- 2025 - BKK -->
-      <article class="project">
+      <article class="project" data-category="digital, rpa">
         <h3>RPA in Barnabókaklubbin – Automation in a Children’s Book Club</h3>
         <p class="project-meta">2025 · Master project · Digital transformation & RPA</p>
         <p class="role"><strong>My role:</strong> Interviews, process mapping, design of automation approach and evaluation.</p>
@@ -464,7 +464,7 @@
       </article>
 
       <!-- 2025 - Sunflower -->
-      <article class="project">
+      <article class="project" data-category="UX, cricital">
         <h3>Det man ikke ser – Critical Design on the Sunflower Lanyard</h3>
         <p class="project-meta">2025 · Master semester project · Critical & speculative design</p>
         <p class="role"><strong>My role:</strong> Research, experiment design and critical reflection.</p>
@@ -482,7 +482,7 @@
       </article>
 
       <!-- EchoGuide -->
-      <article class="project">
+      <article class="project" data-category="ux, critical">
         <h3>EchoGuide – Accessible Museum Companion</h3>
         <p class="project-meta">2024 · Master project · UX & accessibility</p>
         <p class="role"><strong>My role:</strong> Concept & prototype development.</p>
@@ -500,7 +500,7 @@
       </article>
 
       <!-- LumiBreath -->
-      <article class="project">
+      <article class="project" data-category="digital, ux">
         <h3>LumiBreath – Interactive Breathing Lamp</h3>
         <p class="project-meta">2024 · Tangible interaction</p>
         <p class="role"><strong>My role:</strong> Concept, design & interaction.</p>
@@ -518,7 +518,7 @@
       </article>
 
       <!-- Knowable -->
-      <article class="project">
+      <article class="project" data-category="data">
         <h3>Knowable – Trustpilot Review Insights</h3>
         <p class="project-meta">2023 · Bachelor project · NLP / R</p>
         <p class="role"><strong>My role:</strong> Concept, data pipeline, text analysis and prototype.</p>
@@ -536,7 +536,7 @@
       </article>
 
       <!-- Brøndby -->
-      <article class="project">
+      <article class="project" data-category="data">
         <h3>Brøndby IF – Data-Driven Football Analytics</h3>
         <p class="project-meta">2022 · Bachelor project · Sports analytics</p>
         <p class="role"><strong>My role:</strong> Data preparation, modelling and interpretation.</p>
@@ -582,12 +582,28 @@
     </p>
 
     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
-      <span class="pill pill-small">Digital Transformation</span>
-      <span class="pill pill-small">UX & Interaction</span>
-      <span class="pill pill-small">Critical Design</span>
-      <span class="pill pill-small">RPA</span>
-      <span class="pill pill-small">Data & Insights</span>
-    </div>
+     <div class="hero-pills" id="filters">
+  <button class="pill pill--accent active" data-filter="all">
+    <span class="pill-dot"></span> Digital transformation
+  </button>
+
+  <button class="pill" data-filter="ux">
+    <span class="pill-dot"></span> UX & interaction design
+  </button>
+
+  <button class="pill" data-filter="data">
+    <span class="pill-dot"></span> Data & analytics
+  </button>
+
+  <button class="pill" data-filter="rpa">
+    <span class="pill-dot"></span> RPA & automation
+  </button>
+
+  <button class="pill" data-filter="critical">
+    <span class="pill-dot"></span> Critical & speculative design
+  </button>
+</div>
+
   </article>
 
   <!-- TIMELINE -->
@@ -713,6 +729,31 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+<script>
+const filterButtons = document.querySelectorAll('#filters .pill');
+const projects = document.querySelectorAll('.projects-grid .project');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    
+    // remove active style
+    filterButtons.forEach(btn => btn.classList.remove('pill--accent', 'active'));
+    button.classList.add('pill--accent', 'active');
+
+    const filter = button.getAttribute('data-filter');
+
+    projects.forEach(project => {
+      const category = project.getAttribute('data-category');
+
+      if (filter === "all" || category === filter) {
+        project.style.display = "flex";
+      } else {
+        project.style.display = "none";
+      }
+    });
+  });
+});
 </script>
 
 </body>
