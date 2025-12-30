@@ -1,138 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Knowable – Heidi Lindenskov Róadóttir</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  background: #020617;
-  color: #e5e7eb;
-  line-height: 1.7;
-}
-
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px 16px 60px;
-}
-
-a {
-  color: #7dd3fc;
-  text-decoration: none;
-}
-a:hover { text-decoration: underline; }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.back {
-  font-size: .9rem;
-  opacity: .85;
-}
-
-h1 {
-  margin-bottom: 6px;
-}
-
-.meta {
-  color: #9ca3af;
-  font-size: .9rem;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: #0f172a;
-  border: 1px solid rgba(148,163,184,.25);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.pill {
-  display: inline-block;
-  font-size: .8rem;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.4);
-  margin-right: 4px;
-}
-
-footer {
-  margin-top: 40px;
-  color: #9ca3af;
-  font-size: .8rem;
-  text-align: center;
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>LumiBreath – Interactive Breathing Lamp · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+    main { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
+    a { color: #7dd3fc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back { font-size: 0.9rem; color: #9ca3af; }
+    h1 { margin: 10px 0 4px; font-size: clamp(2rem, 3vw, 2.3rem); }
+    .meta { font-size: 0.9rem; color: #9ca3af; margin-bottom: 18px; }
+    .hero-sub { color: #cbd5f5; max-width: 42rem; margin-bottom: 20px; }
+    .pill {
+      display: inline-block; font-size: 0.8rem; padding: 3px 8px;
+      border-radius: 999px; border: 1px solid rgba(148,163,184,.4);
+      margin-right: 6px; margin-bottom: 6px; background: #020617;
+    }
+    .layout { display: grid; gap: 18px; margin-top: 16px; }
+    @media (min-width: 820px) {
+      .layout { grid-template-columns: 3fr 2fr; }
+    }
+    .card {
+      background: #020617;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,.25);
+      padding: 16px 16px 14px;
+      margin-bottom: 14px;
+    }
+    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
+    .side-card {
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,.3);
+      padding: 14px 16px 12px;
+      font-size: 0.92rem;
+      color: #cbd5f5;
+    }
+    .side-card h3 { margin-top: 0; margin-bottom: 4px; font-size: 1rem; }
+    figure {
+      margin: 0 0 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,.25);
+      background: #020617;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    figure img { width: 100%; display: block; }
+    figure figcaption { padding: 8px 10px; }
+    footer {
+      margin-top: 32px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148,163,184,.25);
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
-<main>
+  <main>
+    <a href="index.html#projects" class="back">← Back to projects</a>
 
-  <div class="header">
-    <div>
-      <a class="back" href="index.html">← Back to Projects</a>
+    <h1>LumiBreath – Interactive Breathing Lamp</h1>
+    <div class="meta">
+      Digital Designer course · Tangible interaction · Wellbeing technology
     </div>
-  </div>
 
-  <h1>Knowable – Trustpilot Review Analysis Platform</h1>
-
-  <div class="meta">
-    Bachelor Project · NLP · R · Data Analysis
-  </div>
-
-  <div class="card">
-    <h3>Overview</h3>
-    <p>
-      Knowable challenges the idea that star ratings alone reflect customer experience.
-      I built a data pipeline that scrapes Trustpilot reviews, applies NLP sentiment
-      and topic modelling, and presents deeper insights into what customers actually say.
+    <p class="hero-sub">
+      LumiBreath is a physical-digital lamp that guides users through calming breathing
+      exercises using light and motion. The project explores how embodied interaction and
+      everyday objects can support stress reduction and emotional regulation.
     </p>
-  </div>
 
-  <div class="card">
-    <h3>My Role</h3>
-    <ul>
-      <li>Concept development</li>
-      <li>Data pipeline development in R</li>
-      <li>Web scraping & data cleaning</li>
-      <li>Sentiment and topic modelling</li>
-      <li>Prototype of insight presentation</li>
-    </ul>
-  </div>
+    <div>
+      <span class="pill">Interaction design</span>
+      <span class="pill">Embodied interaction</span>
+      <span class="pill">Physical prototyping</span>
+      <span class="pill">Arduino / microcontroller</span>
+      <span class="pill">Design research</span>
+    </div>
 
-  <div class="card">
-    <h3>Tools & Methods</h3>
-    <span class="pill">R</span>
-    <span class="pill">NLP</span>
-    <span class="pill">Sentiment Analysis</span>
-    <span class="pill">Topic Modelling</span>
-    <span class="pill">Web Scraping</span>
-  </div>
+    <div class="layout">
+      <div>
+        <div class="card">
+          <h2>Context & challenge</h2>
+          <p>
+            Stress and anxiety are increasingly common, particularly among young people.
+            At the same time, much of the technology we use in everyday life is designed for
+            productivity rather than calmness. LumiBreath asks:
+          </p>
+          <ul>
+            <li>How can a familiar object like a lamp become a subtle guide for breathing?</li>
+            <li>What happens when we design for bodily awareness rather than screen time?</li>
+          </ul>
+          <p>
+            The project draws on third-wave HCI and theories of embodiment to integrate
+            technology into lived experience in a gentle, sensory way.
+          </p>
+        </div>
 
-  <div class="card">
-    <h3>Outcome</h3>
-    <p>
-      The project demonstrated how text-based review analysis reveals deeper insights than ratings,
-      supporting smarter decisions for both companies and consumers.
-    </p>
-  </div>
+        <div class="card">
+          <h2>My role</h2>
+          <ul>
+            <li>Co-designed the overall concept and interaction.</li>
+            <li>Contributed to the theoretical grounding and problem framing.</li>
+            <li>Worked on mapping breathing patterns to light and motion behaviour.</li>
+            <li>Helped document iterations and reflections for the final report.</li>
+          </ul>
+        </div>
 
-  <footer>
-    © <span id="year"></span> Heidi Lindenskov Róadóttir
-  </footer>
-</main>
+        <div class="card">
+          <h2>Design & interaction</h2>
+          <h3>Breathing rhythm</h3>
+          <p>
+            The lamp uses slow changes in brightness and movement to indicate when to
+            inhale, hold and exhale. The goal was to create a rhythm that can be followed
+            without cognitive overload or constant visual attention.
+          </p>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+          <h3>Materiality & form</h3>
+          <p>
+            The physical form was chosen to blend into a home environment while still
+            signalling that it is more than “just” a normal lamp. Light diffusion and
+            softness of motion were key parameters to avoid a clinical or gadget-like feel.
+          </p>
 
+          <h3>Embodied experience</h3>
+          <p>
+            Instead of treating interaction as button presses, the project treats breathing
+            as the central interaction. The lamp becomes a companion in a small ritual of
+            self-regulation, rather than a device demanding attention.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Outcome & reflections</h2>
+          <p>
+            The final prototype demonstrates how everyday artefacts can be designed to
+            support mental wellbeing. Testing and reflection suggested that:
+          </p>
+          <ul>
+            <li>Subtle, slow visual cues are more calming than explicit instructions.</li>
+            <li>Users appreciate when technology “fits into” existing routines and spaces.</li>
+            <li>Designing for embodiment requires combining technical and philosophical perspectives.</li>
+          </ul>
+          <p>
+            For me, LumiBreath strengthened my interest in designing technologies that 
+            engage the body, emotions and context – not just the screen.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="side-card">
+          <h3>Project snapshot</h3>
+          <p><strong>Type:</strong> Specialisation course (Digital Designer)</p>
+          <p><strong>Focus:</strong> Stress reduction, embodiment, calm technology</p>
+        </div>
+
+        <figure>
+          <img src="images/lumibreath-prototype-placeholder.png" alt="Photo placeholder of LumiBreath lamp prototype">
+          <figcaption>
+            Placeholder for a photo of the LumiBreath prototype showing light diffusion and movement.
+          </figcaption>
+        </figure>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Heidi Lindenskov Róadóttir
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
