@@ -1,138 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Knowable – Heidi Lindenskov Róadóttir</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  background: #020617;
-  color: #e5e7eb;
-  line-height: 1.7;
-}
-
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px 16px 60px;
-}
-
-a {
-  color: #7dd3fc;
-  text-decoration: none;
-}
-a:hover { text-decoration: underline; }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.back {
-  font-size: .9rem;
-  opacity: .85;
-}
-
-h1 {
-  margin-bottom: 6px;
-}
-
-.meta {
-  color: #9ca3af;
-  font-size: .9rem;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: #0f172a;
-  border: 1px solid rgba(148,163,184,.25);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-}
-
-.pill {
-  display: inline-block;
-  font-size: .8rem;
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.4);
-  margin-right: 4px;
-}
-
-footer {
-  margin-top: 40px;
-  color: #9ca3af;
-  font-size: .8rem;
-  text-align: center;
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>Knowable – Trustpilot Review Analysis Platform · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 35%, #020617 100%);
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+    a { color: #7dd3fc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+    h1 {
+      margin: 10px 0 4px;
+      font-size: clamp(2rem, 3vw, 2.3rem);
+    }
+    .meta {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      color: #cbd5f5;
+      max-width: 42rem;
+      margin-bottom: 20px;
+    }
+    .pill {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.4);
+      margin-right: 6px;
+      margin-bottom: 6px;
+      background: #020617;
+    }
+    .layout {
+      display: grid;
+      gap: 18px;
+      margin-top: 16px;
+    }
+    @media (min-width: 820px) {
+      .layout {
+        grid-template-columns: 3fr 2fr;
+      }
+    }
+    .card {
+      background: #0b1220;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,.25);
+      padding: 16px 16px 14px;
+      margin-bottom: 14px;
+    }
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+    .side-card {
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,.3);
+      padding: 14px 16px 12px;
+      font-size: 0.92rem;
+      color: #cbd5f5;
+    }
+    .side-card h3 {
+      margin-top: 0;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+    figure {
+      margin: 0 0 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,.25);
+      background: #020617;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    figure img {
+      width: 100%;
+      display: block;
+    }
+    figure figcaption {
+      padding: 8px 10px;
+    }
+    footer {
+      margin-top: 32px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148,163,184,.25);
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
-<main>
+  <main>
+    <a href="index.html#projects" class="back">← Back to projects</a>
 
-  <div class="header">
-    <div>
-      <a class="back" href="index.html">← Back to Projects</a>
+    <h1>Knowable – Trustpilot Review Analysis Platform</h1>
+    <div class="meta">
+      Bachelor project · NLP · R · Web scraping · Data visualisation
     </div>
-  </div>
 
-  <h1>Knowable – Trustpilot Review Analysis Platform</h1>
-
-  <div class="meta">
-    Bachelor Project · NLP · R · Data Analysis
-  </div>
-
-  <div class="card">
-    <h3>Overview</h3>
-    <p>
-      Knowable challenges the idea that star ratings alone reflect customer experience.
-      I built a data pipeline that scrapes Trustpilot reviews, applies NLP sentiment
-      and topic modelling, and presents deeper insights into what customers actually say.
+    <p class="hero-sub">
+      Knowable challenges the idea that a simple 1–5 star rating on Trustpilot can fully
+      represent customer experience. By analysing the written reviews behind the stars,
+      the project explores how text analytics can support both companies and consumers
+      in making more informed decisions.
     </p>
-  </div>
 
-  <div class="card">
-    <h3>My Role</h3>
-    <ul>
-      <li>Concept development</li>
-      <li>Data pipeline development in R</li>
-      <li>Web scraping & data cleaning</li>
-      <li>Sentiment and topic modelling</li>
-      <li>Prototype of insight presentation</li>
-    </ul>
-  </div>
+    <div>
+      <span class="pill">R</span>
+      <span class="pill">NLP</span>
+      <span class="pill">Sentiment analysis</span>
+      <span class="pill">Topic modelling</span>
+      <span class="pill">Web scraping</span>
+      <span class="pill">Shiny</span>
+    </div>
 
-  <div class="card">
-    <h3>Tools & Methods</h3>
-    <span class="pill">R</span>
-    <span class="pill">NLP</span>
-    <span class="pill">Sentiment Analysis</span>
-    <span class="pill">Topic Modelling</span>
-    <span class="pill">Web Scraping</span>
-  </div>
+    <div class="layout">
+      <div>
+        <div class="card">
+          <h2>Context & challenge</h2>
+          <p>
+            Online reviews are central to how people evaluate companies. However, star ratings
+            compress complex experiences into a single number. This project set out to explore:
+            <strong>What do customers actually say in their reviews – and how does this align with
+            the visible rating?</strong>
+          </p>
+          <p>
+            The goal was to build a data pipeline and prototype that can extract, analyse and
+            present review content in a way that reveals patterns, themes and sentiments that
+            are otherwise hidden behind the star score.
+          </p>
+        </div>
 
-  <div class="card">
-    <h3>Outcome</h3>
-    <p>
-      The project demonstrated how text-based review analysis reveals deeper insights than ratings,
-      supporting smarter decisions for both companies and consumers.
-    </p>
-  </div>
+        <div class="card">
+          <h2>My role</h2>
+          <ul>
+            <li>Defined the overall concept and research question.</li>
+            <li>Developed the full data pipeline in R – from web scraping to analysis.</li>
+            <li>Implemented sentiment and topic modelling on Trustpilot reviews.</li>
+            <li>Designed and implemented a Shiny prototype to present insights.</li>
+            <li>Interpreted findings and wrote the analytical and methodological parts of the report.</li>
+          </ul>
+        </div>
 
-  <footer>
-    © <span id="year"></span> Heidi Lindenskov Róadóttir
-  </footer>
-</main>
+        <div class="card">
+          <h2>Process & methods</h2>
+          <h3>Data collection</h3>
+          <p>
+            I implemented a custom web scraping function in R to retrieve structured data
+            from selected company pages on Trustpilot. The scraper collected rating, text,
+            date and basic metadata for each review.
+          </p>
 
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+          <h3>Text processing & analysis</h3>
+          <p>
+            The reviews were cleaned and tokenised to prepare them for analysis. I applied:
+          </p>
+          <ul>
+            <li><strong>Sentiment analysis</strong> to understand the emotional tone across reviews.</li>
+            <li><strong>Topic modelling</strong> to detect recurring themes in what customers write about.</li>
+            <li>Basic frequency and co-occurrence analysis to see which terms cluster together.</li>
+          </ul>
 
+          <h3>Interface prototype</h3>
+          <p>
+            In Shiny, I created interactive views that allow users to:
+          </p>
+          <ul>
+            <li>Filter reviews by company and rating.</li>
+            <li>Explore topics and sentiment distributions.</li>
+            <li>See representative reviews for each topic/theme.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Outcome & impact</h2>
+          <p>
+            The resulting concept, Knowable, shows how companies and consumers can move beyond
+            star scores and engage with the language behind them. For companies, the prototype
+            suggests a way to:
+          </p>
+          <ul>
+            <li>Identify recurring complaints or strengths in their service.</li>
+            <li>Compare themselves to competitors on more than just ratings.</li>
+            <li>Track how sentiment changes over time.</li>
+          </ul>
+          <p>
+            For consumers, it demonstrates how review content can help calibrate expectations:
+            a “3-star” for one person might describe a good experience for another.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Reflections & learnings</h2>
+          <p>
+            Working end-to-end with scraping, cleaning, modelling and interface design strengthened
+            my ability to bridge technical work and user-facing insight. It also highlighted how
+            data quality, sampling and modelling assumptions shape the stories we tell with data.
+          </p>
+        </div>
+      </div>
+
+      <aside>
+        <div class="side-card">
+          <h3>Project snapshot</h3>
+          <p><strong>Type:</strong> Bachelor project</p>
+          <p><strong>Focus:</strong> Online reviews, NLP, consumer insight</p>
+          <p><strong>Timeline:</strong> One semester</p>
+        </div>
+
+        <figure>
+          <!-- Replace src with a real screenshot later -->
+          <img src="images/knowable-dashboard-placeholder.png" alt="Screenshot placeholder of Knowable dashboard">
+          <figcaption>
+            Placeholder for a Shiny dashboard screenshot showing sentiment and topic overview.
+          </figcaption>
+        </figure>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Heidi Lindenskov Róadóttir
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
