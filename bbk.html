@@ -1,308 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>RPA in Barnabókaklubbin – Automation in a Children’s Book Club · Heidi Lindenskov Róadóttir</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.7;
-    }
-    main { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
-    a { color: #7dd3fc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { font-size: 0.9rem; color: #9ca3af; }
-    h1 { margin: 10px 0 4px; font-size: clamp(2rem, 3vw, 2.3rem); }
-    .meta { font-size: 0.9rem; color: #9ca3af; margin-bottom: 18px; }
-    .hero-sub { color: #cbd5f5; max-width: 42rem; margin-bottom: 20px; }
-    .pill {
-      display: inline-block; font-size: 0.8rem; padding: 3px 8px;
-      border-radius: 999px; border: 1px solid rgba(148,163,184,.4);
-      margin-right: 6px; margin-bottom: 6px; background: #020617;
-    }
-    .layout { display: grid; gap: 18px; margin-top: 16px; }
-    @media (min-width: 820px) {
-      .layout { grid-template-columns: 3fr 2fr; }
-    }
-    .card {
-      background: #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.25);
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
-    }
-    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
-    .card h3 { margin-bottom: 4px; font-size: 1rem; }
-    .side-card {
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.3);
-      padding: 14px 16px 12px;
-      font-size: 0.92rem;
-      color: #cbd5f5;
-      margin-bottom: 14px;
-    }
-    .side-card h3 { margin-top: 0; margin-bottom: 4px; font-size: 1rem; }
-    figure {
-      margin: 0 0 12px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,.25);
-      background: #020617;
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-    figure img { width: 100%; display: block; }
-    figure figcaption { padding: 8px 10px; }
-    footer {
-      margin-top: 32px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(148,163,184,.25);
-      font-size: 0.8rem;
-      color: #9ca3af;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>RPA in Barnabókaklubbin · Heidi Lindenskov Róadóttir</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root {
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --text-main:#111827;
+  --text-muted:#6b7280;
+  --accent:#111827;
+  --border:#e5e7eb;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text-main);
+  line-height:1.7;
+}
+
+main{
+  max-width:1040px;
+  margin:0 auto;
+  padding:28px 18px 60px;
+}
+
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.back{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  display:inline-block;
+  margin-bottom:8px;
+}
+
+h1{
+  margin:10px 0 4px;
+  font-size:clamp(2.1rem,3vw,2.6rem);
+  font-weight:600;
+}
+
+.meta{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+
+.hero-sub{
+  color:var(--text-muted);
+  max-width:42rem;
+  margin-bottom:12px;
+  font-size:0.98rem;
+}
+
+.pill{
+  display:inline-block;
+  font-size:0.8rem;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text-muted);
+  margin:0 6px 6px 0;
+}
+
+/* layout */
+.layout{
+  display:grid;
+  gap:18px;
+  margin-top:16px;
+}
+@media(min-width:880px){
+  .layout{
+    grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+  }
+}
+
+/* cards */
+.card{
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:16px 16px 14px;
+  margin-bottom:14px;
+  font-size:0.96rem;
+}
+
+.card h2{
+  margin:0 0 6px;
+  font-size:1.1rem;
+  font-weight:600;
+}
+
+.card h3{
+  margin:8px 0 4px;
+  font-size:0.95rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+.card ul{
+  padding-left:1.2rem;
+}
+
+/* side */
+.side-card{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:14px;
+  font-size:0.9rem;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+
+.side-card h3{
+  margin:0 0 6px;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+figure{
+  margin:0 0 12px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  font-size:0.8rem;
+  color:var(--text-muted);
+  background:#e5e7eb;
+}
+
+figure img{
+  width:100%;
+  display:block;
+}
+
+figure figcaption{
+  padding:8px 10px;
+}
+
+footer{
+  margin-top:32px;
+  padding-top:10px;
+  border-top:1px solid var(--border);
+  font-size:0.8rem;
+  color:var(--text-muted);
+  text-align:center;
+}
+</style>
 </head>
+
 <body>
-  <main>
-    <a href="index.html#projects" class="back">← Back to projects</a>
+<main>
 
-    <h1>RPA in Barnabókaklubbin – Automation in a Children’s Book Club</h1>
-    <div class="meta">
-      3rd semester Master project · Digital transformation · RPA · Case study
-    </div>
+<a href="index.html#projects" class="back">← Back to projects</a>
 
-    <p class="hero-sub">
-      Barnabókaklubbin is a Faroese children’s book club whose everyday work relies on
-      manual coordination across loosely connected systems. In this project, we explored how
-      Robotic Process Automation (RPA) can support membership onboarding while still
-      leaving room for human judgement, local knowledge and organisational learning.
-    </p>
+<h1>RPA in Barnabókaklubbin – Automation in a Children’s Book Club</h1>
+<div class="meta">
+  3rd semester Master project · Digital Transformation · RPA · Case Study
+</div>
 
-    <div>
-      <span class="pill">Case study</span>
-      <span class="pill">RPA</span>
-      <span class="pill">Power Automate Desktop</span>
-      <span class="pill">Service blueprinting</span>
-      <span class="pill">Qualitative interviews</span>
-      <span class="pill">Digital transformation</span>
-    </div>
+<p class="hero-sub">
+  Barnabókaklubbin is a Faroese children’s book club whose everyday work relies on
+  manual coordination across loosely connected systems. In this project, I explored how
+  Robotic Process Automation (RPA) can support membership onboarding while still
+  leaving room for human judgement, local knowledge and organisational learning.
+</p>
 
-    <div class="layout">
-      <div>
-        <div class="card">
-          <h2>Context</h2>
-          <p>
-            Membership administration in Barnabókaklubbin happens across a web form,
-            Outlook, Excel, Navision 2018 and Brevo (CRM). None of these systems are fully
-            integrated, so staff move data manually between them and use their own overview
-            and judgement to keep everything consistent and running. Membership creation for
-            a single child can take around ten minutes and depends heavily on one key
-            employee knowing the “right way” to do things.
-          </p>
-          <p>
-            This makes the organisation vulnerable: if the person with the overview is sick or
-            leaves, it becomes difficult to keep track of members, payments and book
-            shipments – but a full system replacement is neither realistic nor affordable in the
-            short term.
-          </p>
-        </div>
+<div>
+  <span class="pill">RPA</span>
+  <span class="pill">Power Automate Desktop</span>
+  <span class="pill">Case study</span>
+  <span class="pill">Process mapping</span>
+  <span class="pill">Service blueprinting</span>
+  <span class="pill">Qualitative research</span>
+</div>
 
-        <div class="card">
-          <h2>Research focus</h2>
-          <p>
-            The project investigates how RPA can support membership onboarding in a small,
-            low-maturity organisation without replacing human judgement. We focus on the
-            membership registration flow because it is well-defined, repetitive and based on
-            structured input, yet time-consuming and error-prone when done manually.
-          </p>
-          <p>
-            Methodologically, we combine qualitative interviews, process mapping and service
-            blueprinting with a design-based approach: we analyse current practice, derive
-            design principles and implement a working RPA prototype that can be evaluated in
-            the organisation.
-          </p>
-        </div>
+<div class="layout">
+<div>
 
-        <div class="card">
-          <h2>My role – technical lead</h2>
-          <p>
-            I was responsible for the entire technical side of the project:
-          </p>
-          <ul>
-            <li>Designing the overall automation concept and flow structure.</li>
-            <li>Developing the full Power Automate Desktop flow for membership onboarding.</li>
-            <li>
-              Implementing robust parsing of HTML e-mails from the online registration form
-              into structured variables.
-            </li>
-            <li>
-              Automating data entry in Navision 2018, including debtor creation, payment
-              setup and the link to Rokningardepilin.
-            </li>
-            <li>
-              Automating creation of webshop users and Brevo CRM contacts connected to the
-              new member.
-            </li>
-            <li>
-              Debugging selectors, handling timing issues and making the flow modular and
-              maintainable.
-            </li>
-            <li>
-              Documenting the flow in detail and preparing material for testing and
-              evaluation.
-            </li>
-          </ul>
-        </div>
+<div class="card">
+  <h2>Context</h2>
+  <p>
+    Membership administration happens across Outlook, Excel, Navision 2018 and Brevo.
+    None of these systems are fully integrated, meaning staff manually move data
+    between them and rely on tacit knowledge to keep everything consistent.
+  </p>
+  <p>
+    This makes the organisation vulnerable – if the person with the overview is away,
+    it becomes difficult to keep track of members, payments and shipments. A full
+    system replacement is unrealistic, so the project explores automation as a
+    pragmatic step forward.
+  </p>
+</div>
 
-        <div class="card">
-          <h2>Process & approach</h2>
+<div class="card">
+  <h2>Research focus</h2>
+  <p>
+    The project investigates how RPA can support membership onboarding in a small,
+    low-maturity organisation without replacing human judgement.
+  </p>
+  <p>
+    Methodologically, the project combines qualitative interviews, process mapping
+    and service blueprinting with a design-based approach where analysis, design and
+    implementation inform each other.
+  </p>
+</div>
 
-          <h3>1. Understanding existing work</h3>
-          <p>
-            Together with my group, I mapped the current (“as-is”) membership process using
-            interviews and a service blueprint. This showed how much of the daily work
-            consists of “glue tasks” – copying data between systems, checking for errors and
-            compensating for missing integration – and how strongly the process relies on one
-            person’s tacit knowledge.
-          </p>
+<div class="card">
+  <h2>My role – Technical Lead</h2>
+  <p>I was responsible for the entire technical side of the project:</p>
+  <ul>
+    <li>Designing the full automation concept and flow structure.</li>
+    <li>Developing the complete Power Automate Desktop RPA solution.</li>
+    <li>Parsing HTML registration emails into structured variables.</li>
+    <li>
+      Automating membership creation in Navision 2018, including debtor setup,
+      financial settings and Rokningardepilin integration.
+    </li>
+    <li>Automating creation of webshop users and CRM contacts in Brevo.</li>
+    <li>Debugging selectors, timing issues and ensuring maintainability.</li>
+    <li>Documentation, testing and technical evaluation.</li>
+  </ul>
+</div>
 
-          <h3>2. From analysis to design principles</h3>
-          <p>
-            Based on the analysis, we formulated design principles for the future solution:
-            focus on stable, rule-based steps; keep the automation modular; make data quality
-            visible; and ensure a clear division of labour between RPA and staff. Automation
-            should support the existing practice where it is already stable, not introduce
-            completely new ways of working overnight.
-          </p>
+<div class="card">
+  <h2>Process & approach</h2>
 
-          <h3>3. Building the RPA flow</h3>
-          <p>
-            I implemented a Power Automate Desktop flow split into four logical modules:
-            <em>Main</em> (parsing the e-mail), <em>Navision2</em> (debtor creation and payment
-            setup), <em>Webshop users</em> (creating the webshop login) and <em>Brevo</em>
-            (creating the CRM contact). Each module can be adapted or extended separately if
-            systems change.
-          </p>
-        </div>
+  <h3>1️⃣ Understanding current practice</h3>
+  <p>
+    Through interviews and blueprinting we mapped the real “as-is” process and
+    identified how much work consists of “glue tasks” — manually holding systems
+    together.
+  </p>
 
-        <div class="card">
-          <h2>What the automation does</h2>
-          <p>
-            In practice, the flow works like this:
-          </p>
-          <ul>
-            <li>
-              Reads the newest registration e-mail from a dedicated inbox via IMAP and
-              cleans the HTML into line-based text.
-            </li>
-            <li>
-              Maps field labels (e.g. child’s name, guardian, address, bank details) to
-              variables using a custom “previous label” strategy, including date conversion and
-              basic validation.
-            </li>
-            <li>
-              Opens Navision 2018, creates a new debtor, fills in master data and financial
-              settings, and updates Rokningardepilin with account and registration numbers.
-            </li>
-            <li>
-              Creates a linked webshop user with the correct customer number and default
-              login settings.
-            </li>
-            <li>
-              Opens Brevo in the browser, navigates to the CRM module and creates a contact
-              subscribed to the relevant lists.
-            </li>
-          </ul>
-          <p>
-            The only manual step for staff is to trigger the flow from a desktop shortcut and
-            provide the shared passwords when prompted.
-          </p>
-        </div>
+  <h3>2️⃣ From insights to design principles</h3>
+  <p>
+    We prioritised selective automation of stable, rule-based parts of the process,
+    modular flow design, visibility of data quality issues and a clear division of
+    labour between staff and RPA.
+  </p>
 
-        <div class="card">
-          <h2>Evaluation & impact</h2>
-          <p>
-            We evaluated the prototype through a test membership registration together with
-            the responsible employee. The flow completed the entire onboarding – across
-            e-mail, Navision, webshop and Brevo – in about four minutes. The equivalent
-            manual process normally takes around ten minutes and requires much more active
-            concentration, system-switching and double-checking.
-          </p>
-          <p>
-            Even though we only ran a limited test, it showed that the flow is technically
-            robust in a standard case and that it aligns well with the staff member’s
-            expectations. At the same time, the test highlighted that the solution will require
-            ongoing maintenance when input formats, systems or business rules change.
-          </p>
-        </div>
+  <h3>3️⃣ Building the RPA flow</h3>
+  <p>
+    The solution was built across four modules: email parsing, Navision debtor
+    creation, webshop setup and Brevo CRM contact creation — allowing future changes
+    without rebuilding everything.
+  </p>
+</div>
 
-        <div class="card">
-          <h2>Key learnings</h2>
-          <ul>
-            <li>
-              In small organisations, selective automation of stable sub-processes is often
-              more realistic than “full automation” of everything.
-            </li>
-            <li>
-              Data quality work and clear process descriptions are necessary pre-conditions
-              for RPA – otherwise the robot mainly automates existing mess.
-            </li>
-            <li>
-              Modular flow design makes it easier to debug and evolve the solution when the
-              system landscape gradually changes.
-            </li>
-            <li>
-              Human judgement remains central: the RPA flow handles the repetitive,
-              rule-based work, while staff keep responsibility for exceptions, edge cases and
-              member communication.
-            </li>
-          </ul>
-          <p>
-            Overall, the project shows how Power Automate can act as a practical bridge
-            between Barnabókaklubbin’s current systems and a more integrated digital
-            infrastructure in the future.
-          </p>
-        </div>
-      </div>
+<div class="card">
+  <h2>Outcome</h2>
+  <p>
+    In testing, the RPA onboarding completed the process in ~4 minutes compared to
+    ~10 minutes manually, while reducing cognitive load and repetitive copy-paste
+    work. Staff still handle edge cases and judgement-heavy situations.
+  </p>
+</div>
 
-      <aside>
-        <div class="side-card">
-          <h3>Project snapshot</h3>
-          <p><strong>Type:</strong> 3rd semester Master project</p>
-          <p><strong>Programme:</strong> Cand.IT Digital Transformation, Roskilde University</p>
-          <p><strong>Case partner:</strong> Barnabókaklubbin (Faroese children’s book club)</p>
-          <p><strong>My role:</strong> Technical lead – design and implementation of the full RPA flow</p>
-        </div>
+<div class="card">
+  <h2>Key learnings</h2>
+  <ul>
+    <li>Selective automation is often more realistic than “full automation”.</li>
+    <li>RPA depends on process clarity and data quality.</li>
+    <li>Modular flow design supports adaptation over time.</li>
+    <li>Human judgement remains central in small organisations.</li>
+  </ul>
+</div>
 
-        <div class="side-card">
-          <h3>Tech & methods</h3>
-          <p><strong>Tools:</strong> Power Automate Desktop, Outlook IMAP, Navision 2018, Brevo CRM</p>
-          <p><strong>Methods:</strong> Qualitative interviews, service blueprinting, design-based research, prototype test.</p>
-        </div>
+</div>
 
-        <figure>
-          <img src="images/bkk-blueprint-placeholder.png" alt="Service blueprint and RPA flow for membership registration">
-          <figcaption>
-            Placeholder for a service blueprint and RPA flow diagram showing the automated
-            membership registration across e-mail, Navision, webshop and Brevo.
-          </figcaption>
-        </figure>
-      </aside>
-    </div>
+<aside>
 
-    <footer>
-      © <span id="year"></span> Heidi Lindenskov Róadóttir
-    </footer>
-  </main>
+<div class="side-card">
+  <h3>Project snapshot</h3>
+  <p><strong>Type:</strong> Master semester project</p>
+  <p><strong>Programme:</strong> Cand.IT Digital Transformation</p>
+  <p><strong>Case partner:</strong> Barnabókaklubbin</p>
+  <p><strong>My role:</strong> Technical Lead</p>
+</div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<div class="side-card">
+  <h3>Tech & methods</h3>
+  <p><strong>Tools:</strong> Power Automate Desktop, Navision 2018, Outlook, Brevo</p>
+  <p><strong>Methods:</strong> Interviews, service blueprinting, prototype testing</p>
+</div>
+
+<figure>
+  <img src="images/bkk-blueprint-placeholder.png">
+  <figcaption>
+    Service blueprint / RPA flow placeholder
+  </figcaption>
+</figure>
+
+</aside>
+</div>
+
+<footer>
+  © <span id="year"></span> Heidi Lindenskov Róadóttir
+</footer>
+
+</main>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
