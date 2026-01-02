@@ -4,187 +4,482 @@
   <meta charset="UTF-8" />
   <title>Brøndby IF – Data-Driven Football Analytics · Heidi Lindenskov Róadóttir</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.7;
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
     }
-    main { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
-    a { color: #7dd3fc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { font-size: 0.9rem; color: #9ca3af; }
-    h1 { margin: 10px 0 4px; font-size: clamp(2rem, 3vw, 2.3rem); }
-    .meta { font-size: 0.9rem; color: #9ca3af; margin-bottom: 18px; }
-    .hero-sub { color: #cbd5f5; max-width: 42rem; margin-bottom: 20px; }
-    .pill {
-      display: inline-block; font-size: 0.8rem; padding: 3px 8px;
-      border-radius: 999px; border: 1px solid rgba(148,163,184,.4);
-      margin-right: 6px; margin-bottom: 6px; background: #020617;
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
     }
-    .layout { display: grid; gap: 18px; margin-top: 16px; }
-    @media (min-width: 820px) {
-      .layout { grid-template-columns: 3fr 2fr; }
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
     }
-    .card {
-      background: #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.25);
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
     }
-    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
-    .side-card {
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.3);
-      padding: 14px 16px 12px;
-      font-size: 0.92rem;
-      color: #cbd5f5;
+
+    h1{
+      margin:10px 0 4px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
     }
-    .side-card h3 { margin-top: 0; margin-bottom: 4px; font-size: 1rem; }
-    figure {
-      margin: 0 0 12px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,.25);
-      background: #020617;
-      font-size: 0.8rem;
-      color: #9ca3af;
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:10px;
     }
-    figure img { width: 100%; display: block; }
-    figure figcaption { padding: 8px 10px; }
-    footer {
-      margin-top: 32px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(148,163,184,.25);
-      font-size: 0.8rem;
-      color: #9ca3af;
-      text-align: center;
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:42rem;
+      margin-bottom:12px;
+      font-size:0.98rem;
+    }
+
+    .pill{
+      display:inline-block;
+      font-size:0.8rem;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text-muted);
+      margin:0 6px 6px 0;
+    }
+
+    /* layout */
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+      }
+    }
+
+    /* cards */
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px 16px 14px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .card h3{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .card ul{
+      padding-left:1.2rem;
+    }
+
+    /* side */
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    /* carousel */
+    .carousel{
+      position:relative;
+      margin-bottom:14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#e5e7eb;
+      overflow:hidden;
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .carousel figure{
+      margin:0;
+      display:none;
+    }
+
+    .carousel figure.active{
+      display:block;
+    }
+
+    .carousel img{
+      width:100%;
+      display:block;
+    }
+
+    .carousel figcaption{
+      padding:8px 10px;
+      background:#f3f4f6;
+    }
+
+    .carousel-nav{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+
+    .carousel-btn{
+      pointer-events:auto;
+      border:none;
+      background:rgba(15,23,42,0.45);
+      color:#e5e7eb;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      margin:0 6px;
+    }
+
+    .carousel-dots{
+      position:absolute;
+      bottom:6px;
+      left:0;
+      right:0;
+      display:flex;
+      justify-content:center;
+      gap:4px;
+      pointer-events:none;
+    }
+
+    .carousel-dot{
+      pointer-events:auto;
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      border:none;
+      background:rgba(15,23,42,0.35);
+      cursor:pointer;
+    }
+
+    .carousel-dot.active{
+      background:#111827;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <a href="index.html#projects" class="back">← Back to projects</a>
+<main>
 
-    <h1>Brøndby IF – Data-Driven Football Analytics</h1>
-    <div class="meta">
-      Bachelor project · Sports analytics · Statistics · R
-    </div>
+  <a href="index.html#projects" class="back">← Back to projects</a>
 
-    <p class="hero-sub">
-      This project explores how data can support strategic and tactical decision-making
-      in Brøndby IF. Using detailed event data from matches, we built an Expected Goals
-      (xG) model and additional analyses to understand shot quality, patterns of play and
-      player behaviour.
-    </p>
+  <h1>Brøndby IF — Data-Driven Football Analytics</h1>
+  <div class="meta">
+    2nd semester data analysis exam project · Sports analytics · Statistics · R
+  </div>
 
+  <p class="hero-sub">
+    Using detailed event data from the Danish Superliga and international leagues,
+    this project builds Expected Goals (xG) models, clustering analyses and large
+    descriptive overviews to understand Brøndby IF’s shot quality, patterns of play
+    and how men’s and women’s football differ in style and tactics.:contentReference[oaicite:0]{index=0}
+  </p>
+
+  <div>
+    <span class="pill">R</span>
+    <span class="pill">Sports analytics</span>
+    <span class="pill">Expected Goals (xG)</span>
+    <span class="pill">Predictive modelling</span>
+    <span class="pill">Clustering</span>
+    <span class="pill">Visualisation</span>
+  </div>
+
+  <div class="layout">
     <div>
-      <span class="pill">R</span>
-      <span class="pill">Predictive modelling</span>
-      <span class="pill">Clustering</span>
-      <span class="pill">Sports analytics</span>
-      <span class="pill">Visualisation</span>
-    </div>
 
-    <div class="layout">
-      <div>
-        <div class="card">
-          <h2>Context & challenge</h2>
-          <p>
-            Football decisions are often driven by emotion, intuition and tradition. At the
-            same time, clubs increasingly have access to rich data about every pass, shot
-            and position on the pitch. The challenge was to:
-          </p>
-          <ul>
-            <li>Build a meaningful xG model for Brøndby IF using event data.</li>
-            <li>Explore how different variables influence shot success.</li>
-            <li>Translate analytical results into insights that coaches could use.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>My role</h2>
-          <ul>
-            <li>Loaded and merged multiple datasets of Superliga match events in R.</li>
-            <li>Prepared features describing shot context (distance, angle, body part, etc.).</li>
-            <li>Helped train and evaluate the xG model on training/test splits.</li>
-            <li>Created visualisations and descriptive statistics to communicate findings.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Modelling & analysis</h2>
-          <h3>Feature engineering</h3>
-          <p>
-            We engineered variables including:
-          </p>
-          <ul>
-            <li>Shot distance and angle to goal.</li>
-            <li>Body part used (foot, head, other).</li>
-            <li>Match context, such as half and game state.</li>
-            <li>Team and opposition formations.</li>
-          </ul>
-
-          <h3>xG model</h3>
-          <p>
-            Using these features, we trained a model to estimate the probability that a shot
-            becomes a goal. We then validated it on a held-out test set to evaluate
-            performance and calibration.
-          </p>
-
-          <h3>Additional insights</h3>
-          <p>
-            Beyond the core xG model, we explored passing patterns, shot locations and
-            player clusters to highlight where Brøndby created high-quality chances and
-            where they struggled.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Outcome & reflections</h2>
-          <p>
-            The project demonstrated that:
-          </p>
-          <ul>
-            <li>xG provides a more stable performance measure than raw goals.</li>
-            <li>Spatial features (distance, angle) are strong predictors of success.</li>
-            <li>Visualisations help make complex models understandable for non-technical stakeholders.</li>
-          </ul>
-          <p>
-            For me, this project solidified my interest in data analysis and modelling, and
-            gave me experience applying these skills in a domain that is both complex
-            and very concrete.
-          </p>
-        </div>
+      <div class="card">
+        <h2>Context & challenge</h2>
+        <p>
+          Football decisions are often guided by intuition, experience and emotion.
+          At the same time, clubs now have access to detailed event data for every
+          pass, shot and duel. In this project, we asked:
+        </p>
+        <ul>
+          <li>How can an xG model help Brøndby IF evaluate performance beyond goals?</li>
+          <li>Which factors most strongly influence whether a shot becomes a goal?</li>
+          <li>How can large volumes of match data be turned into clear, usable insight?</li>
+        </ul>
+        <p>
+          The work combines several assignments into one analytical storyline: xG models
+          for Brøndby and three synthetic leagues, clustering of passes and players, and
+          descriptive comparisons of men’s and women’s football using StatsBomb data.:contentReference[oaicite:1]{index=1}
+        </p>
       </div>
 
-      <aside>
-        <div class="side-card">
-          <h3>Project snapshot</h3>
-          <p><strong>Type:</strong> Bachelor exam project (Data analysis)</p>
-          <p><strong>Focus:</strong> Expected Goals, event data, tactical insight</p>
-        </div>
+      <div class="card">
+        <h2>My role – Data & analysis lead</h2>
+        <p>
+          I worked as the main technical and analytical driver on the project:
+        </p>
+        <ul>
+          <li>Loaded, merged and cleaned large match event datasets in R.</li>
+          <li>Engineered features such as shot distance, angle, body part and formations.</li>
+          <li>Implemented and evaluated xG models (classification trees and random forests).</li>
+          <li>Built clustering models for passes, shots and player profiles.</li>
+          <li>Designed visualisations and tables so results were easy to interpret.</li>
+        </ul>
+        <p>
+          A big part of my work was turning raw, messy data into something that both we
+          and non-technical stakeholders could actually reason with.
+        </p>
+      </div>
 
-        <figure>
-          <img src="images/brondby-xg-plot-placeholder.png" alt="Placeholder heatmap or xG visualisation">
-          <figcaption>
-            Placeholder for an xG plot or pitch map visualising shot quality and locations.
-          </figcaption>
-        </figure>
-      </aside>
+      <div class="card">
+        <h2>xG modelling for Brøndby</h2>
+        <h3>Feature engineering</h3>
+        <p>
+          For Brøndby’s Superliga matches we combined two shot datasets and derived
+          variables describing:
+        </p>
+        <ul>
+          <li>Shot location (X/Y), distance and angle to goal.</li>
+          <li>Body part used and shot type (open play, free kick, penalty, etc.).</li>
+          <li>Match context such as half and game state.</li>
+          <li>Team and opposition formations at the moment of the shot.</li>
+        </ul>
+
+        <h3>Models</h3>
+        <p>
+          We first built a classification tree to keep the logic explainable, and then
+          compared it to a random forest model which uses many trees in parallel. The
+          random forest achieved higher accuracy and highlighted which variables were
+          most important (location and distance dominating, with some effect of formation).:contentReference[oaicite:2]{index=2}
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Beyond Brøndby – leagues & player profiles</h2>
+        <h3>Three-league xG model</h3>
+        <p>
+          To avoid over- or underestimating goal probability in a single league, we
+          combined “bottom”, “mid” and “top” synthetic leagues into one 3,000-shot
+          dataset and built a second xG model. This allowed us to compare how shot
+          quality and conversion change across different competitive levels.:contentReference[oaicite:3]{index=3}
+        </p>
+
+        <h3>Clustering passes & players</h3>
+        <p>
+          Using k-means and hierarchical clustering, we grouped:
+        </p>
+        <ul>
+          <li>
+            <strong>Passes</strong> by length, height and start/end location to reveal typical
+            build-up patterns.
+          </li>
+          <li>
+            <strong>Players</strong> by average shot locations, pass profiles and success
+            rates – useful when clubs want to find replacements with similar
+            characteristics.
+          </li>
+        </ul>
+        <p>
+          These models made it possible to talk about “player types” and typical patterns
+          instead of just isolated statistics.:contentReference[oaicite:4]{index=4}
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Gender comparison & freeze-frame analysis</h2>
+        <p>
+          In a later part of the project, we compared men’s and women’s matches using
+          a large StatsBomb dataset. We looked at differences in passing length, shot
+          types, formations and event distributions, and analysed “freeze-frames” to see
+          how many team-mates and opponents were between shooter and goal at the
+          moment of a shot.:contentReference[oaicite:5]{index=5}
+        </p>
+        <p>
+          The analysis challenged stereotypes about women’s football being “less
+          aggressive” and showed that many patterns are more similar than popular
+          narratives suggest.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Outcome & learnings</h2>
+        <ul>
+          <li>xG gives a more stable view of performance than raw goals alone.</li>
+          <li>Spatial features like distance and angle are strong predictors of success.</li>
+          <li>
+            Clustering can translate huge datasets into understandable “profiles”
+            for passes and players.
+          </li>
+          <li>
+            Good visualisations are essential when communicating complex models
+            to coaches and non-technical stakeholders.
+          </li>
+        </ul>
+        <p>
+          Overall, the project sharpened my skills in statistical modelling, working with
+          large sports datasets and turning technical work into concrete, visual insight.
+        </p>
+      </div>
+
     </div>
 
-    <footer>
-      © <span id="year"></span> Heidi Lindenskov Róadóttir
-    </footer>
-  </main>
+    <aside>
+      <div class="side-card">
+        <h3>Project snapshot</h3>
+        <p><strong>Type:</strong> 2nd semester data analysis exam</p>
+        <p><strong>Programme:</strong> Data analysis, CphBusiness</p>
+        <p><strong>Focus:</strong> xG models, clustering, gender comparison</p>
+        <p><strong>My role:</strong> Data, modelling & visualisation lead</p>
+      </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+      <div class="carousel" data-carousel>
+        <figure class="active">
+          <img src="images/brondby/xg_pitchmap.png" alt="xG shot map on a football pitch">
+          <figcaption>
+            Example xG pitch map showing where successful and unsuccessful shots are taken.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/brondby/random_forest_importance.png" alt="Random forest variable importance plot">
+          <figcaption>
+            Variable importance from the random forest model – location and distance dominate.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/brondby/cluster_shots.png" alt="Cluster plot of shot locations">
+          <figcaption>
+            Clustering of Superliga shots into groups with different locations and goal probabilities.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/brondby/cluster_players.png" alt="Cluster plot of player profiles">
+          <figcaption>
+            Player clusters based on average shot and passing profiles – useful for replacement scouting.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/brondby/gender_events_comparison.png" alt="Comparison chart of men and women match events">
+          <figcaption>
+            Comparison of key match events in men’s and women’s football based on StatsBomb data.
+          </figcaption>
+        </figure>
+
+        <div class="carousel-nav">
+          <button class="carousel-btn" data-dir="prev" aria-label="Previous image">‹</button>
+          <button class="carousel-btn" data-dir="next" aria-label="Next image">›</button>
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Simple reusable carousel
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel){
+    const slides = carousel.querySelectorAll('figure');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    let index = 0;
+
+    // create dots
+    slides.forEach(function(_, i){
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-index', i);
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    function showSlide(i){
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => {
+        s.classList.toggle('active', j === index);
+      });
+      dots.forEach((d, j) => {
+        d.classList.toggle('active', j === index);
+      });
+    }
+
+    carousel.addEventListener('click', function(e){
+      if (e.target.matches('.carousel-btn')){
+        const dir = e.target.getAttribute('data-dir');
+        showSlide(index + (dir === 'next' ? 1 : -1));
+      }
+      if (e.target.matches('.carousel-dot')){
+        const targetIndex = parseInt(e.target.getAttribute('data-index'), 10);
+        showSlide(targetIndex);
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
