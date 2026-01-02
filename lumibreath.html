@@ -1,188 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>LumiBreath – Interactive Breathing Lamp · Heidi Lindenskov Róadóttir</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.7;
-    }
-    main { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
-    a { color: #7dd3fc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { font-size: 0.9rem; color: #9ca3af; }
-    h1 { margin: 10px 0 4px; font-size: clamp(2rem, 3vw, 2.3rem); }
-    .meta { font-size: 0.9rem; color: #9ca3af; margin-bottom: 18px; }
-    .hero-sub { color: #cbd5f5; max-width: 42rem; margin-bottom: 20px; }
-    .pill {
-      display: inline-block; font-size: 0.8rem; padding: 3px 8px;
-      border-radius: 999px; border: 1px solid rgba(148,163,184,.4);
-      margin-right: 6px; margin-bottom: 6px; background: #020617;
-    }
-    .layout { display: grid; gap: 18px; margin-top: 16px; }
-    @media (min-width: 820px) {
-      .layout { grid-template-columns: 3fr 2fr; }
-    }
-    .card {
-      background: #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.25);
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
-    }
-    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
-    .side-card {
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.3);
-      padding: 14px 16px 12px;
-      font-size: 0.92rem;
-      color: #cbd5f5;
-    }
-    .side-card h3 { margin-top: 0; margin-bottom: 4px; font-size: 1rem; }
-    figure {
-      margin: 0 0 12px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,.25);
-      background: #020617;
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-    figure img { width: 100%; display: block; }
-    figure figcaption { padding: 8px 10px; }
-    footer {
-      margin-top: 32px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(148,163,184,.25);
-      font-size: 0.8rem;
-      color: #9ca3af;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>LumiBreath – Interactive Breathing Lamp · Heidi Lindenskov Róadóttir</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --text-main:#111827;
+  --text-muted:#6b7280;
+  --accent:#111827;
+  --border:#e5e7eb;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text-main);
+  line-height:1.7;
+}
+
+main{
+  max-width:1040px;
+  margin:0 auto;
+  padding:28px 18px 60px;
+}
+
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.back{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  display:inline-block;
+  margin-bottom:8px;
+}
+
+h1{
+  margin:10px 0 4px;
+  font-size:clamp(2.1rem,3vw,2.6rem);
+  font-weight:600;
+}
+
+.meta{
+  font-size:0.9rem;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+
+.hero-sub{
+  color:var(--text-muted);
+  max-width:42rem;
+  margin-bottom:12px;
+  font-size:0.98rem;
+}
+
+.pill{
+  display:inline-block;
+  font-size:0.8rem;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--text-muted);
+  margin:0 6px 6px 0;
+}
+
+/* layout */
+.layout{
+  display:grid;
+  gap:18px;
+  margin-top:16px;
+}
+@media(min-width:880px){
+  .layout{
+    grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+  }
+}
+
+/* cards */
+.card{
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:16px 16px 14px;
+  margin-bottom:14px;
+  font-size:0.96rem;
+}
+
+.card h2{
+  margin:0 0 6px;
+  font-size:1.1rem;
+  font-weight:600;
+}
+
+.card h3{
+  margin:8px 0 4px;
+  font-size:0.95rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+.card ul{
+  padding-left:1.2rem;
+}
+
+/* side */
+.side-card{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:14px;
+  font-size:0.9rem;
+  color:var(--text-muted);
+  margin-bottom:14px;
+}
+
+.side-card h3{
+  margin:0 0 6px;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+/* video */
+.video-box{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:12px;
+  margin-bottom:14px;
+  font-size:0.85rem;
+  color:var(--text-muted);
+}
+
+.video-label{
+  margin:0 0 8px;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+.video-frame{
+  width:100%;
+  aspect-ratio:4 / 3;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#000;
+}
+
+/* carousels */
+.carousel{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:12px;
+  margin-bottom:14px;
+}
+
+.carousel h3{
+  margin:4px 0 8px;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--accent);
+}
+
+.carousel-frame{
+  width:100%;
+  aspect-ratio:4 / 3;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#e5e7eb;
+  position:relative;
+}
+
+.carousel-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+
+.carousel-frame img.active{
+  display:block;
+}
+
+.carousel-controls{
+  margin-top:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.carousel-btn{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+}
+
+.carousel-btn:hover{
+  background:#f3f4f6;
+}
+
+.carousel-indicator{
+  color:var(--text-muted);
+  font-size:0.85rem;
+}
+
+footer{
+  margin-top:32px;
+  padding-top:10px;
+  border-top:1px solid var(--border);
+  font-size:0.8rem;
+  color:var(--text-muted);
+  text-align:center;
+}
+</style>
 </head>
+
 <body>
-  <main>
-    <a href="index.html#projects" class="back">← Back to projects</a>
+<main>
 
-    <h1>LumiBreath – Interactive Breathing Lamp</h1>
-    <div class="meta">
-      Digital Designer course · Tangible interaction · Wellbeing technology
-    </div>
+<a href="index.html#projects" class="back">← Back to projects</a>
 
-    <p class="hero-sub">
-      LumiBreath is a physical-digital lamp that guides users through calming breathing
-      exercises using light and motion. The project explores how embodied interaction and
-      everyday objects can support stress reduction and emotional regulation.
-    </p>
+<h1>LumiBreath – Interactive Breathing Lamp</h1>
+<div class="meta">
+  Specialisation course · Tangible interaction · Calm technology
+</div>
 
-    <div>
-      <span class="pill">Interaction design</span>
-      <span class="pill">Embodied interaction</span>
-      <span class="pill">Physical prototyping</span>
-      <span class="pill">Arduino / microcontroller</span>
-      <span class="pill">Design research</span>
-    </div>
+<p class="hero-sub">
+  LumiBreath is a physical-digital lamp that guides users through a calming
+  breathing exercise using light and motion. The project explores how embodied
+  interaction and everyday objects can support stress reduction and emotional
+  regulation.
+</p>
 
-    <div class="layout">
-      <div>
-        <div class="card">
-          <h2>Context & challenge</h2>
-          <p>
-            Stress and anxiety are increasingly common, particularly among young people.
-            At the same time, much of the technology we use in everyday life is designed for
-            productivity rather than calmness. LumiBreath asks:
-          </p>
-          <ul>
-            <li>How can a familiar object like a lamp become a subtle guide for breathing?</li>
-            <li>What happens when we design for bodily awareness rather than screen time?</li>
-          </ul>
-          <p>
-            The project draws on third-wave HCI and theories of embodiment to integrate
-            technology into lived experience in a gentle, sensory way.
-          </p>
-        </div>
+<div>
+  <span class="pill">Interaction design</span>
+  <span class="pill">Embodied interaction</span>
+  <span class="pill">Physical prototyping</span>
+  <span class="pill">Arduino & NeoPixels</span>
+  <span class="pill">Design research</span>
+</div>
 
-        <div class="card">
-          <h2>My role</h2>
-          <ul>
-            <li>Co-designed the overall concept and interaction.</li>
-            <li>Contributed to the theoretical grounding and problem framing.</li>
-            <li>Worked on mapping breathing patterns to light and motion behaviour.</li>
-            <li>Helped document iterations and reflections for the final report.</li>
-          </ul>
-        </div>
+<div class="layout">
+<div>
 
-        <div class="card">
-          <h2>Design & interaction</h2>
-          <h3>Breathing rhythm</h3>
-          <p>
-            The lamp uses slow changes in brightness and movement to indicate when to
-            inhale, hold and exhale. The goal was to create a rhythm that can be followed
-            without cognitive overload or constant visual attention.
-          </p>
+<div class="card">
+  <h2>Context & challenge</h2>
+  <p>
+    Stress and anxiety are widespread, especially among young people. At the
+    same time, many everyday technologies are designed for productivity rather
+    than calmness. LumiBreath asks:
+  </p>
+  <ul>
+    <li>How can a familiar object like a lamp become a subtle guide for breathing?</li>
+    <li>What happens when we design for bodily awareness instead of screen time?</li>
+  </ul>
+  <p>
+    The project is grounded in third-wave HCI and phenomenological perspectives
+    on embodiment, treating technology as something that becomes part of lived
+    experience rather than a separate tool.
+  </p>
+</div>
 
-          <h3>Materiality & form</h3>
-          <p>
-            The physical form was chosen to blend into a home environment while still
-            signalling that it is more than “just” a normal lamp. Light diffusion and
-            softness of motion were key parameters to avoid a clinical or gadget-like feel.
-          </p>
+<div class="card">
+  <h2>My role – Concept, prototypes & code</h2>
+  <p>
+    I was responsible for the full technical and constructive side of the project:
+  </p>
+  <ul>
+    <li>Co-created the initial idea and refined the concept for a breathing lamp.</li>
+    <li>Designed and built all physical prototypes – from low-fi cardboard and
+        wire frames to 3D-printed and laser-cut components.</li>
+    <li>Developed the breathing mechanism based on a custom 3D-printed cam
+        system driving the lamp “arms”.</li>
+    <li>Implemented the complete Arduino code controlling NeoPixel light patterns
+        and servo movement in synchronised breathing phases.</li>
+    <li>Documented the wiring diagram, core code snippets and technical
+        reasoning for the final report.</li>
+  </ul>
+</div>
 
-          <h3>Embodied experience</h3>
-          <p>
-            Instead of treating interaction as button presses, the project treats breathing
-            as the central interaction. The lamp becomes a companion in a small ritual of
-            self-regulation, rather than a device demanding attention.
-          </p>
-        </div>
+<div class="card">
+  <h2>Design & interaction</h2>
 
-        <div class="card">
-          <h2>Outcome & reflections</h2>
-          <p>
-            The final prototype demonstrates how everyday artefacts can be designed to
-            support mental wellbeing. Testing and reflection suggested that:
-          </p>
-          <ul>
-            <li>Subtle, slow visual cues are more calming than explicit instructions.</li>
-            <li>Users appreciate when technology “fits into” existing routines and spaces.</li>
-            <li>Designing for embodiment requires combining technical and philosophical perspectives.</li>
-          </ul>
-          <p>
-            For me, LumiBreath strengthened my interest in designing technologies that 
-            engage the body, emotions and context – not just the screen.
-          </p>
-        </div>
-      </div>
+  <h3>Breathing rhythm</h3>
+  <p>
+    The lamp runs a guided 4–4–4–4 breathing exercise: inhale, hold, exhale and
+    rest. Using soft colour transitions and subtle motion, the lamp shows when
+    to breathe in, hold and breathe out without demanding constant visual focus.
+  </p>
 
-      <aside>
-        <div class="side-card">
-          <h3>Project snapshot</h3>
-          <p><strong>Type:</strong> Specialisation course (Digital Designer)</p>
-          <p><strong>Focus:</strong> Stress reduction, embodiment, calm technology</p>
-        </div>
+  <h3>Materiality & form</h3>
+  <p>
+    We iterated through multiple lamp-head geometries and elastic fabrics to
+    achieve a soft, almost organic movement that diffuses light gently. The
+    final form combines a translucent 3D-printed “cloud” head with a dark,
+    semi-transparent textile cover that stretches as the lamp “breathes”.
+  </p>
 
-        <figure>
-          <img src="images/lumibreath-prototype-placeholder.png" alt="Photo placeholder of LumiBreath lamp prototype">
-          <figcaption>
-            Placeholder for a photo of the LumiBreath prototype showing light diffusion and movement.
-          </figcaption>
-        </figure>
-      </aside>
-    </div>
+  <h3>Embodied experience</h3>
+  <p>
+    Interaction centres on breathing, not button-pressing. The user intentionally
+    starts the exercise via a dedicated button and then mirrors the lamp’s
+    rhythm, letting the body follow the slow pulse of light and movement.
+  </p>
+</div>
 
-    <footer>
-      © <span id="year"></span> Heidi Lindenskov Róadóttir
-    </footer>
-  </main>
+<div class="card">
+  <h2>Process & iterations</h2>
+  <p>
+    The design process moved through several rounds of sketching, low-fi
+    prototypes, 3D models and technical experiments:
+  </p>
+  <ul>
+    <li>Mechanical sketches and wire mock-ups to explore how the lamp head
+        could “breathe”.</li>
+    <li>Fusion 360 models and 3D-printed heads with different thickness and
+        translucency to test light diffusion.</li>
+    <li>Material tests with elastic fabrics to find a cover that both moved
+        freely and let the NeoPixel colours shine through.</li>
+    <li>Refinement of the breathing pattern and servo motion based on user
+        feedback about comfort and “uncanny” movement.</li>
+  </ul>
+</div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<div class="card">
+  <h2>Technical implementation</h2>
+  <p>
+    The lamp is controlled by an Arduino Plus board, a NeoPixel LED ring, an
+    SG90 servo motor, a dedicated exercise button and an on/off switch.
+  </p>
+  <ul>
+    <li>Breathing is implemented as a small state machine with phases
+        <em>FADE_IN</em>, <em>HOLD</em> and <em>FADE_OUT</em> for both light and
+        motion.</li>
+    <li>Timing uses <code>millis()</code> instead of <code>delay()</code> to
+        keep servo motion and light transitions synchronised and responsive.</li>
+    <li>The NeoPixels shift between soft blues and greens, while the servo slowly
+        expands and contracts the lamp head.</li>
+  </ul>
+  <p>
+    Together this creates a coherent, rhythmic behaviour that feels more like a
+    breathing companion than a gadget.
+  </p>
+</div>
+
+<div class="card">
+  <h2>Outcome & reflections</h2>
+  <p>
+    LumiBreath shows how everyday artefacts can quietly support mental
+    wellbeing when interaction is grounded in the body. Reflections and user
+    feedback highlighted that:
+  </p>
+  <ul>
+    <li>Slow, non-verbal cues are calmer than explicit instructions or screens.</li>
+    <li>Manual activation gives users a stronger sense of safety and control
+        than automatic sensing.</li>
+    <li>Iterating across both material form and code is essential when designing
+        rich, embodied interactions.</li>
+  </ul>
+  <p>
+    The project strengthened my interest in combining technical making with
+    theoretical perspectives on stress, embodiment and calm technology.
+  </p>
+</div>
+
+</div>
+
+<aside>
+
+<div class="side-card">
+  <h3>Project snapshot</h3>
+  <p><strong>Type:</strong> Specialisation course project (Digital Designer)</p>
+  <p><strong>Programme:</strong> Cand.IT Digital Transformation</p>
+  <p><strong>Focus:</strong> Stress reduction, embodiment, calm technology</p>
+  <p><strong>My role:</strong> Idea, technical implementation & all physical prototypes</p>
+</div>
+
+<div class="video-box">
+  <p class="video-label">Breathing sequence demo</p>
+  <div class="video-frame">
+    <!-- Replace with your actual video file -->
+    <video src="videos/lumibreath-breathing.mp4"
+           autoplay
+           loop
+           muted
+           playsinline
+           style="width:100%;height:100%;object-fit:cover;">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p style="margin-top:6px;">
+    Short loop showing how LumiBreath “breathes” through light and movement.
+  </p>
+</div>
+
+<!-- IMAGE CAROUSEL -->
+<div class="carousel">
+  <h3>Prototype & making process</h3>
+
+  <div class="carousel-frame" data-carousel="lumibreath">
+    <!-- Ret your own billeder ind her -->
+    <img src="images/lumibreath/lumibreath-prototype-1.jpg" alt="Early mechanical prototype without textile cover">
+    <img src="images/lumibreath/lumibreath-prototype-2.jpg" alt="Lamp assembled with fabric and NeoPixel ring lit">
+    <img src="images/lumibreath/lumibreath-prototype-3.jpg" alt="Close-up of breathing lamp on a desk">
+  </div>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn" data-prev="lumibreath">←</button>
+    <span class="carousel-indicator" data-indicator="lumibreath">1 / 3</span>
+    <button class="carousel-btn" data-next="lumibreath">→</button>
+  </div>
+</div>
+
+</aside>
+</div>
+
+<footer>
+  © <span id="year"></span> Heidi Lindenskov Róadóttir
+</footer>
+
+</main>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function setupCarousel(name){
+  const frame = document.querySelector(`[data-carousel="${name}"]`);
+  const images = Array.from(frame.querySelectorAll("img"));
+  const indicator = document.querySelector(`[data-indicator="${name}"]`);
+  let index = 0;
+
+  function update(){
+    images.forEach(img => img.classList.remove("active"));
+    images[index].classList.add("active");
+    indicator.textContent = `${index+1} / ${images.length}`;
+  }
+
+  document.querySelector(`[data-prev="${name}"]`).onclick = () => {
+    index = (index - 1 + images.length) % images.length;
+    update();
+  };
+
+  document.querySelector(`[data-next="${name}"]`).onclick = () => {
+    index = (index + 1) % images.length;
+    update();
+  };
+
+  update();
+}
+
+setupCarousel("lumibreath");
+</script>
+
 </body>
 </html>
