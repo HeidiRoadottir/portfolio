@@ -4,207 +4,332 @@
   <meta charset="UTF-8" />
   <title>EchoGuide – Accessible Museum Companion · Heidi Lindenskov Róadóttir</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.7;
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
     }
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 28px 16px 60px;
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
     }
-    a { color: #7dd3fc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { font-size: 0.9rem; color: #9ca3af; }
-    h1 { margin: 10px 0 4px; font-size: clamp(2rem, 3vw, 2.3rem); }
-    .meta { font-size: 0.9rem; color: #9ca3af; margin-bottom: 18px; }
-    .hero-sub { color: #cbd5f5; max-width: 42rem; margin-bottom: 20px; }
-    .pill {
-      display: inline-block; font-size: 0.8rem; padding: 3px 8px;
-      border-radius: 999px; border: 1px solid rgba(148,163,184,.4);
-      margin-right: 6px; margin-bottom: 6px; background: #020617;
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
     }
-    .layout { display: grid; gap: 18px; margin-top: 16px; }
-    @media (min-width: 820px) {
-      .layout { grid-template-columns: 3fr 2fr; }
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
     }
-    .card {
-      background: #020617;
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.25);
-      padding: 16px 16px 14px;
-      margin-bottom: 14px;
+
+    h1{
+      margin:10px 0 4px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
     }
-    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: 1.1rem; }
-    .side-card {
-      background: radial-gradient(circle at top left, #1e293b, #020617);
-      border-radius: 14px;
-      border: 1px solid rgba(148,163,184,.3);
-      padding: 14px 16px 12px;
-      font-size: 0.92rem;
-      color: #cbd5f5;
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:10px;
     }
-    .side-card h3 { margin-top: 0; margin-bottom: 4px; font-size: 1rem; }
-    figure {
-      margin: 0 0 12px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,.25);
-      background: #020617;
-      font-size: 0.8rem;
-      color: #9ca3af;
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:42rem;
+      margin-bottom:12px;
+      font-size:0.98rem;
     }
-    figure img { width: 100%; display: block; }
-    figure figcaption { padding: 8px 10px; }
-    footer {
-      margin-top: 32px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(148,163,184,.25);
-      font-size: 0.8rem;
-      color: #9ca3af;
-      text-align: center;
+
+    .pill{
+      display:inline-block;
+      font-size:0.8rem;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text-muted);
+      margin:0 6px 6px 0;
+    }
+
+    /* layout */
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+      }
+    }
+
+    /* cards */
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px 16px 14px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .card h3{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .card ul{
+      padding-left:1.2rem;
+    }
+
+    /* side */
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    figure{
+      margin:0 0 12px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      background:#e5e7eb;
+    }
+
+    figure img{
+      width:100%;
+      display:block;
+    }
+
+    figure figcaption{
+      padding:8px 10px;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <a href="index.html#projects" class="back">← Back to projects</a>
+<main>
 
-    <h1>EchoGuide – Accessible Museum Companion</h1>
-    <div class="meta">
-      Master project · UX · Accessibility · Iterative prototyping
-    </div>
+  <a href="index.html#projects" class="back">← Back to projects</a>
 
-    <p class="hero-sub">
-      EchoGuide explores how museums can become more inclusive for visitors with visual
-      impairments and other access needs. The project started from a concrete case brief about
-      digital information screens at a Viking ship museum and grew into a broader concept for an
-      audio-based companion app.
-    </p>
+  <h1>EchoGuide — Accessible Museum Companion</h1>
+  <div class="meta">
+    Master exam project · UX & accessibility · Iterative prototyping
+  </div>
 
+  <p class="hero-sub">
+    EchoGuide explores how museums can become more inclusive for visitors with visual
+    impairments and other access needs. The project started from a case about digital
+    info screens at a Viking ship museum and grew into a broader concept for an
+    audio-based companion app that reads exhibits aloud and supports more independent visits.
+  </p>
+
+  <div>
+    <span class="pill">UX & interaction design</span>
+    <span class="pill">Accessibility</span>
+    <span class="pill">Design sprint</span>
+    <span class="pill">Speculative design</span>
+    <span class="pill">p5.js & Teachable Machine</span>
+  </div>
+
+  <div class="layout">
     <div>
-      <span class="pill">Design sprint</span>
-      <span class="pill">UX</span>
-      <span class="pill">Accessibility</span>
-      <span class="pill">Speculative design</span>
-      <span class="pill">Prototyping</span>
-      <span class="pill">p5.js</span>
-    </div>
 
-    <div class="layout">
-      <div>
-        <div class="card">
-          <h2>Context & challenge</h2>
-          <p>
-            The initial case asked for a digital info screen to show the day’s activities, film
-            screenings and events at the museum. Rather than simply digitising an analogue
-            magnet board, we asked:
-          </p>
-          <ul>
-            <li>What if we designed from the perspective of visitors who cannot rely on vision?</li>
-            <li>How would museum information change if 40% of visitors were blind?</li>
-          </ul>
-          <p>
-            This shift led us towards speculative and accessibility-focused explorations, moving
-            beyond screens to consider audio, tactility and independence.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>My role</h2>
-          <ul>
-            <li>Co-developed the overall concept and user scenarios.</li>
-            <li>Contributed to storyboards and early speculative prototypes.</li>
-            <li>Worked on interface and interaction decisions for the app-based solution.</li>
-            <li>Participated in testing and reflection on accessibility and usability.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Process & iterations</h2>
-          <h3>Iteration 1 — Speculative “Smart Cane”</h3>
-          <p>
-            We initially explored a speculative physical artefact: a cane that could sense and read
-            information in the museum through tactile feedback and text-to-Braille translation.
-            This helped us understand technological and practical limitations, but also highlighted
-            the value of independence and non-intrusive support.
-          </p>
-
-          <h3>Iteration 2 — App prototype with audio feedback</h3>
-          <p>
-            We then shifted towards a mobile app built in p5.js using image recognition and audio
-            output to read exhibit information aloud. This iteration focused on:
-          </p>
-          <ul>
-            <li>Camera-based scanning of markers or images near exhibits.</li>
-            <li>Audio narration of text associated with each object.</li>
-            <li>Basic layout and navigation for visually impaired users.</li>
-          </ul>
-
-          <h3>Iteration 3 — Usability & scalability</h3>
-          <p>
-            In the final iteration, we refined the concept with more attention to:
-          </p>
-          <ul>
-            <li>Scalability to other museums and contexts.</li>
-            <li>Usefulness beyond visual impairment (e.g. dyslexia, children, elderly visitors).</li>
-            <li>Opportunities for personalised narratives using AI in future work.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Outcome & impact</h2>
-          <p>
-            EchoGuide became a concept for an accessible museum companion that:
-          </p>
-          <ul>
-            <li>Supports independent navigation by reading information aloud.</li>
-            <li>Can be adapted to different exhibitions and institutions.</li>
-            <li>Serves multiple user groups with different access needs.</li>
-          </ul>
-          <p>
-            While the technical prototype remains exploratory, the project offers concrete design
-            directions for museums wanting to move beyond purely visual communication.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Reflections & learnings</h2>
-          <p>
-            EchoGuide strengthened my understanding of accessibility as an integral part of UX
-            rather than an add-on. The process also showed the value of speculative first iterations
-            to open up the design space before converging on more feasible solutions.
-          </p>
-        </div>
+      <div class="card">
+        <h2>Context</h2>
+        <p>
+          The original brief asked for a digital info screen showing the daily programme at
+          the Viking Ship Museum in Roskilde. Rather than simply digitising the analogue
+          magnet boards, our group reframed the task: what if we designed first from the
+          perspective of visitors who cannot rely on vision?
+        </p>
+        <p>
+          This led to a series of iterations — from a speculative “Smart Cane” to an
+          app-based solution — all centred on how museum information can be experienced
+          through sound, tactility and independence instead of static text on screens.
+        </p>
       </div>
 
-      <aside>
-        <div class="side-card">
-          <h3>Project snapshot</h3>
-          <p><strong>Type:</strong> Master exam project</p>
-          <p><strong>Case:</strong> Digital information for a Viking ship museum</p>
-          <p><strong>Focus:</strong> Accessibility, universal design, audio interaction</p>
-        </div>
+      <div class="card">
+        <h2>My role</h2>
+        <p>
+          I contributed across concept development, interaction design and documentation:
+        </p>
+        <ul>
+          <li>Co-developed the EchoGuide concept and overall user journeys.</li>
+          <li>Worked on interface and interaction decisions for the app prototype.</li>
+          <li>Helped shape the iterations from speculative “Smart Cane” to app-based solution.</li>
+          <li>Contributed substantially to the written report and visual framing (e.g. cover).</li>
+          <li>Participated in testing and reflection on accessibility and universal design.</li>
+        </ul>
+      </div>
 
-        <figure>
-          <img src="images/echoguide-wireframes-placeholder.png" alt="EchoGuide wireframes placeholder">
-          <figcaption>
-            Placeholder for wireframes or storyboard of EchoGuide flows for scanning and listening.
-          </figcaption>
-        </figure>
-      </aside>
+      <div class="card">
+        <h2>Iteration 1 — “What if 40% of the population were blind?”</h2>
+        <p>
+          The first experiment used speculative design to imagine a world where a large part
+          of the population is born blind. We designed a <em>Smart Cane</em> with tactile
+          feedback and Braille translation as a primary interface to the museum.
+        </p>
+        <ul>
+          <li>Explored user stories and storyboards around independence and reliance on technology.</li>
+          <li>Built a physical prototype to test dimensions, grip and feedback.</li>
+          <li>Revealed both possibilities and practical limitations of fully hardware-based solutions.</li>
+        </ul>
+        <p>
+          This iteration gave us empathy for blind visitors and highlighted how much museum
+          information is locked behind visual text. :contentReference[oaicite:0]{index=0}
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Iteration 2 — Design sprint & first app prototype</h2>
+        <p>
+          In the second iteration we ran a five-day design sprint and shifted towards a
+          smartphone-based solution. An interview with Dansk Blindesamfund confirmed the
+          need for independent access to the text normally printed on museum labels. :contentReference[oaicite:1]{index=1}
+        </p>
+        <ul>
+          <li>Built an early EchoGuide prototype in p5.js using Teachable Machine.</li>
+          <li>Camera-based object recognition triggers text-to-speech for specific exhibits.</li>
+          <li>Tested the prototype on doors and Viking ships to understand robustness in real settings.</li>
+        </ul>
+        <p>
+          The sprint showed that smartphones are less conspicuous than custom hardware
+          and easier to scale across institutions, but also surfaced usability issues and
+          training demands for the ML model. :contentReference[oaicite:2]{index=2}
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Iteration 3 — Towards a universal museum companion</h2>
+        <p>
+          In the final iteration we broadened the target group beyond visual impairment and
+          focused on usability and scalability.
+        </p>
+        <ul>
+          <li>Introduced a login screen so museums can host their own tailored EchoGuide model.</li>
+          <li>Refined the camera view and confidence feedback to make scanning clearer.</li>
+          <li>Added more everyday, “human” audio scripts and ambient sound to support atmosphere.</li>
+        </ul>
+        <p>
+          The result is a concept that can support blind visitors, but also children, elderly
+          visitors and people with dyslexia — anyone who benefits from audio-based access
+          and simpler language. :contentReference[oaicite:3]{index=3}
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Outcome & learnings</h2>
+        <ul>
+          <li>
+            Accessibility is strongest when treated as a core UX concern, not an add-on.
+          </li>
+          <li>
+            Combining speculative first iterations with concrete prototypes helps open the
+            design space before converging on feasible solutions.
+          </li>
+          <li>
+            Image recognition and ML are powerful, but require careful data collection and
+            consideration of lighting and context in real museums. :contentReference[oaicite:4]{index=4}
+          </li>
+        </ul>
+        <p>
+          EchoGuide strengthened my interest in accessibility and in designing technologies
+          that can travel across institutions while still respecting local content and visitors’
+          different ways of engaging with culture.
+        </p>
+      </div>
+
     </div>
 
-    <footer>
-      © <span id="year"></span> Heidi Lindenskov Róadóttir
-    </footer>
-  </main>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <aside>
+
+      <div class="side-card">
+        <h3>Project snapshot</h3>
+        <p><strong>Type:</strong> Master exam project</p>
+        <p><strong>Programme:</strong> Cand.IT Digital Transformation</p>
+        <p><strong>Case:</strong> Digital information for the Viking Ship Museum, Roskilde</p>
+        <p><strong>Focus:</strong> Accessibility, universal design, audio interaction</p>
+      </div>
+
+      <figure>
+        <img src="images/echoguide-cover-placeholder.png" alt="EchoGuide cover and phone mockup">
+        <figcaption>
+          Placeholder for EchoGuide cover / app mockup showing the auditory companion concept.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/echoguide-app-placeholder.png" alt="EchoGuide app UI with camera and audio feedback">
+        <figcaption>
+          Placeholder for screenshots of the EchoGuide app recognising exhibits and reading information aloud.
+        </figcaption>
+      </figure>
+
+    </aside>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
