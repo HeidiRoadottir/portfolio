@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Workshop at Roskilde Festival 2025 · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
+    }
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
+    }
+
+    h1{
+      margin:10px 0 6px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
+    }
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:10px;
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:46rem;
+      margin-bottom:12px;
+      font-size:0.98rem;
+    }
+
+    .pill{
+      display:inline-block;
+      font-size:0.8rem;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text-muted);
+      margin:0 6px 6px 0;
+    }
+
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+      }
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px 16px 14px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .card h3{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .card ul{
+      padding-left:1.2rem;
+    }
+
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    /* carousel */
+    .carousel{
+      position:relative;
+      margin-bottom:14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#e5e7eb;
+      overflow:hidden;
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .carousel figure{
+      margin:0;
+      display:none;
+    }
+    .carousel figure.active{
+      display:block;
+    }
+
+    .carousel img{
+      width:100%;
+      display:block;
+    }
+
+    .carousel figcaption{
+      padding:8px 10px;
+      background:#f3f4f6;
+      border-top:1px solid var(--border);
+    }
+
+    .carousel-nav{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+
+    .carousel-btn{
+      pointer-events:auto;
+      border:none;
+      background:rgba(15,23,42,0.45);
+      color:#fff;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      margin:0 6px;
+    }
+
+    .carousel-dots{
+      position:absolute;
+      bottom:8px;
+      left:0;
+      right:0;
+      display:flex;
+      justify-content:center;
+      gap:4px;
+      pointer-events:none;
+    }
+
+    .carousel-dot{
+      pointer-events:auto;
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      border:none;
+      background:rgba(17,24,39,0.25);
+      cursor:pointer;
+    }
+
+    .carousel-dot.active{
+      background:#111827;
+    }
+
+    .cta{
+      display:inline-block;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      color:var(--accent);
+      font-size:0.92rem;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <a href="index.html#projects" class="back">← Back</a>
+
+  <h1>Workshop at Roskilde Festival 2025 — Sensory & Inclusive Design</h1>
+  <div class="meta">
+    Public workshop · Facilitation · Participatory design · Roskilde University × Roskilde Festival
+  </div>
+
+  <p class="hero-sub">
+    I co-developed and facilitated a hands-on workshop at <strong>Roskilde Festival 2025</strong>
+    in collaboration with <strong>Roskilde University</strong>. The workshop invited participants
+    to engage with the sunflower lanyard as more than a symbol — exploring how visibility,
+    care and stigma are negotiated in public space through making, conversation and sensory experience.
+  </p>
+
+  <div>
+    <span class="pill">Workshop facilitation</span>
+    <span class="pill">Participatory design</span>
+    <span class="pill">Public engagement</span>
+    <span class="pill">Inclusive design</span>
+    <span class="pill">Sensory experience</span>
+  </div>
+
+  <div class="layout">
+    <div>
+
+      <div class="card">
+        <h2>Context</h2>
+        <p>
+          The workshop was part of Roskilde University’s contribution to Roskilde Festival and
+          connected to festival initiatives around sensory spaces, mental wellbeing and social sustainability.
+          We created a small “frirum” where participants could slow down, reflect and take part in an
+          activity that combined craft, dialogue and lived experiences of disability.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Workshop concept</h2>
+        <p>
+          Participants personalised sunflower lanyards through hands-on making (e.g., embroidery / decoration),
+          while the facilitation framed questions such as:
+        </p>
+        <ul>
+          <li>What does it mean to be “seen” as needing consideration?</li>
+          <li>When does a symbol create safety — and when does it create exposure?</li>
+          <li>How do we show care in public spaces without demanding explanations?</li>
+        </ul>
+        <p>
+          The workshop created an accessible entry point to sensitive themes without requiring participants
+          to disclose personal stories — making it possible to participate through both making and conversation.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>My role</h2>
+        <p>
+          I contributed across both design and delivery of the workshop:
+        </p>
+        <ul>
+          <li>Co-developed the workshop format, flow and facilitation prompts.</li>
+          <li>Designed the material setup and participant experience (hands-on + reflective).</li>
+          <li>Helped facilitate the workshop on-site and guide participants through the activity.</li>
+          <li>Documented and reflected on outcomes to inform future design and research work.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Outcome & learnings</h2>
+        <ul>
+          <li>
+            Public workshops can create low-threshold entry points to complex social topics — especially
+            when participants can engage through making rather than debate.
+          </li>
+          <li>
+            Sensory and embodied formats make it easier to talk about care, stigma and visibility without
+            forcing personal disclosure.
+          </li>
+          <li>
+            Facilitation is a design practice: the framing and pacing strongly shape what participants feel
+            safe to share and explore.
+          </li>
+        </ul>
+
+        <p style="margin-top:10px;">
+          <a class="cta" href="https://ruc.dk/nyheder/rucstuderende-skaber-sanselige-frirum-paa-roskilde-festival-2025" target="_blank" rel="noopener">
+            Read the RUC feature →
+          </a>
+        </p>
+      </div>
+
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <h3>Workshop snapshot</h3>
+        <p><strong>Setting:</strong> Roskilde Festival 2025</p>
+        <p><strong>Partner:</strong> Roskilde University</p>
+        <p><strong>Format:</strong> Hands-on making + facilitated reflection</p>
+        <p><strong>Theme:</strong> Care, visibility, stigma & inclusive public space</p>
+      </div>
+
+      <div class="carousel" data-carousel aria-label="Workshop images">
+        <figure class="active">
+          <img src="images/workshop/workshop-setup.jpg" alt="Workshop space and materials setup">
+          <figcaption>Workshop setup and materials — designed as a calm, low-threshold “frirum”.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/workshop/workshop-participants.jpg" alt="Participants working on sunflower lanyards">
+          <figcaption>Participants personalising lanyards and engaging in reflective conversation.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/workshop/workshop-detail.jpg" alt="Detail photo of a personalised lanyard">
+          <figcaption>Detail of a personalised lanyard — turning a symbol into expression and dialogue.</figcaption>
+        </figure>
+
+        <!-- Add/remove slides by duplicating/removing <figure> blocks -->
+
+        <div class="carousel-nav">
+          <button class="carousel-btn" data-dir="prev" aria-label="Previous image">‹</button>
+          <button class="carousel-btn" data-dir="next" aria-label="Next image">›</button>
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Simple reusable carousel
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel){
+    const slides = carousel.querySelectorAll('figure');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    let index = 0;
+
+    // Create dots
+    slides.forEach(function(_, i){
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-index', i);
+      dot.setAttribute('type', 'button');
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    function showSlide(i){
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('active', j === index));
+      dots.forEach((d, j) => d.classList.toggle('active', j === index));
+    }
+
+    carousel.addEventListener('click', function(e){
+      if (e.target.matches('.carousel-btn')){
+        const dir = e.target.getAttribute('data-dir');
+        showSlide(index + (dir === 'next' ? 1 : -1));
+      }
+      if (e.target.matches('.carousel-dot')){
+        const targetIndex = parseInt(e.target.getAttribute('data-index'), 10);
+        showSlide(targetIndex);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
