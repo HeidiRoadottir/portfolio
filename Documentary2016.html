@@ -69,6 +69,7 @@
     @media(min-width:880px){
       .layout{
         grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+        align-items:start;
       }
     }
 
@@ -104,11 +105,52 @@
       color:var(--accent);
     }
 
+    /* Video card (full width bottom) */
+    .video-card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px;
+      margin-top:8px;
+    }
+
+    .video-card-header{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+
+    .video-card h2{
+      margin:0;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .video-note{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin:0;
+    }
+
     .video-wrapper{
       border-radius:12px;
       overflow:hidden;
       border:1px solid var(--border);
       background:#e5e7eb;
+      position:relative;
+      aspect-ratio:16/9;
+    }
+
+    .video-wrapper iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
     }
 
     footer{
@@ -133,7 +175,7 @@
   </div>
 
   <p class="hero-sub">
-    <em>At liva við tí</em> (Living with it) is a short documentary following two women
+    <em>At liva við tí</em> (To live with it) is a short documentary following two women
     with very different experiences of death. One has lost her mother to cancer, while
     the other has survived two suicide attempts. The film explores how these contrasting
     encounters with death shape their perspectives on life, grief and survival.
@@ -179,33 +221,37 @@
     </div>
 
     <aside>
-
       <div class="side-card">
         <h3>Project snapshot</h3>
         <p><strong>Format:</strong> Short documentary</p>
         <p><strong>Length:</strong> 10:17 minutes</p>
         <p><strong>Language:</strong> Faroese</p>
         <p><strong>Theme:</strong> Death, grief, survival</p>
-        <p><strong>Role:</strong> Concept, filming & editing</p>
+        <p><strong>Role:</strong> Concept, filming &amp; editing</p>
       </div>
-
-      <div class="video-wrapper" style="aspect-ratio:16/9;">
-        <iframe
-          src="https://www.youtube.com/embed/T2ZWv8AbSf4"
-          title="At liva við tí — Documentary"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <p style="margin-top:8px;">
-        <a href="https://www.youtube.com/watch?v=T2ZWv8AbSf4" target="_blank" rel="noopener">
-          Watch on YouTube →
-        </a>
-      </p>
-
     </aside>
   </div>
+
+  <!-- FULL-WIDTH VIDEO CARD (BOTTOM) -->
+  <section class="video-card" aria-label="Documentary video">
+    <div class="video-card-header">
+      <h2>Watch the film</h2>
+      <p class="video-note">
+        <a href="https://www.youtube.com/watch?v=T2ZWv8AbSf4" target="_blank" rel="noopener">
+          Open on YouTube →
+        </a>
+      </p>
+    </div>
+
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/T2ZWv8AbSf4"
+        title="At liva við tí — Documentary"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
 
   <footer>
     © <span id="year"></span> Heidi Lindenskov Róadóttir
