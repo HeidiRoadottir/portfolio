@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D Anatomy Puzzle – Digital-to-Physical Learning Design · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
+    }
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
+    }
+
+    h1{
+      margin:10px 0 4px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
+    }
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:10px;
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:42rem;
+      margin-bottom:12px;
+      font-size:0.98rem;
+    }
+
+    .pill{
+      display:inline-block;
+      font-size:0.8rem;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text-muted);
+      margin:0 6px 6px 0;
+    }
+
+    /* layout */
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+      }
+    }
+
+    /* cards */
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px 16px 14px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .card h3{
+      margin:8px 0 4px;
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .card ul{
+      padding-left:1.2rem;
+    }
+
+    /* side */
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    /* carousel */
+    .carousel{
+      position:relative;
+      margin-bottom:14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#e5e7eb;
+      overflow:hidden;
+      font-size:0.8rem;
+      color:var(--text-muted);
+    }
+
+    .carousel figure{
+      margin:0;
+      display:none;
+    }
+    .carousel figure.active{
+      display:block;
+    }
+
+    .carousel img{
+      width:100%;
+      display:block;
+    }
+
+    .carousel figcaption{
+      padding:8px 10px;
+      background:#f3f4f6;
+      border-top:1px solid var(--border);
+    }
+
+    .carousel-nav{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+
+    .carousel-btn{
+      pointer-events:auto;
+      border:none;
+      background:rgba(15,23,42,0.45);
+      color:#fff;
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      margin:0 6px;
+    }
+
+    .carousel-dots{
+      position:absolute;
+      bottom:8px;
+      left:0;
+      right:0;
+      display:flex;
+      justify-content:center;
+      gap:4px;
+      pointer-events:none;
+    }
+
+    .carousel-dot{
+      pointer-events:auto;
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      border:none;
+      background:rgba(17,24,39,0.25);
+      cursor:pointer;
+    }
+
+    .carousel-dot.active{
+      background:#111827;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <a href="index.html#projects" class="back">← Back to projects</a>
+
+  <h1>3D Anatomy Puzzle — Digital-to-Physical Learning Design</h1>
+  <div class="meta">
+    Other activity · Digital fabrication · Learning through play
+  </div>
+
+  <p class="hero-sub">
+    I designed and produced a physical anatomy puzzle for children, translating digital
+    illustrations into a tactile learning artefact. The puzzle helps children explore how
+    organs are placed in the body by physically assembling the pieces.
+  </p>
+
+  <div>
+    <span class="pill">Digital-to-physical design</span>
+    <span class="pill">Laser cutting / CNC</span>
+    <span class="pill">Illustration</span>
+    <span class="pill">Tangible interaction</span>
+    <span class="pill">Learning design</span>
+    <span class="pill">Faroese language edition</span>
+  </div>
+
+  <div class="layout">
+    <div>
+
+      <div class="card">
+        <h2>Context</h2>
+        <p>
+          Screen-based learning is not always the best format for children — especially when
+          the goal is understanding the body and spatial relations. This project explores how
+          hands-on interaction can support curiosity, memory and language learning through play.
+        </p>
+        <p>
+          The design includes a Faroese-language version, supporting learning in a local
+          linguistic and cultural context.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>My role</h2>
+        <p>
+          This was an individual fabrication project. I was responsible for the full process:
+        </p>
+        <ul>
+          <li>Concept development and educational framing.</li>
+          <li>Illustration and visual system for child-friendly anatomy.</li>
+          <li>Digital modelling and preparation for fabrication (paths, tolerances, layers).</li>
+          <li>Production planning and fabrication workflow (laser-cut / CNC).</li>
+          <li>Assembly testing and iteration based on fit and usability.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Design decisions</h2>
+        <h3>Clear anatomy, playful form</h3>
+        <p>
+          The puzzle balances recognisable organ shapes with a child-friendly visual language.
+          Each organ has a distinct colour and label to support both identification and language learning.
+        </p>
+
+        <h3>Layering & fit</h3>
+        <p>
+          The layered construction makes it possible to “open” the body and understand the
+          relationship between parts. The design was iterated to ensure a satisfying fit
+          without being too difficult to assemble.
+        </p>
+
+        <h3>Language adaptation</h3>
+        <p>
+          The Faroese edition adds an extra learning layer: children can connect tactile
+          exploration with vocabulary and naming of organs.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Outcome</h2>
+        <p>
+          The final result is a durable, tactile learning artefact that demonstrates how digital
+          design workflows can create meaningful physical products. For me, it reflects a broader
+          interest in interaction design beyond screens — especially within education and culture.
+        </p>
+      </div>
+
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <h3>Activity snapshot</h3>
+        <p><strong>Format:</strong> Physical puzzle (children’s learning artefact)</p>
+        <p><strong>Language:</strong> Faroese edition available</p>
+        <p><strong>Focus:</strong> Digital-to-physical workflow, tangible learning</p>
+        <p><strong>My role:</strong> Concept, design, modelling & fabrication</p>
+      </div>
+
+      <div class="carousel" data-carousel aria-label="3D Anatomy Puzzle images">
+        <figure class="active">
+          <img src="images/puzzle/puzzle-girl-pieces.jpg" alt="Puzzle pieces laid out next to the base board">
+          <figcaption>
+            Puzzle parts and base board — designed as a layered assembly to explore anatomy through touch.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/puzzle/puzzle-girl-assembled.jpg" alt="Assembled girl version with Faroese organ labels">
+          <figcaption>
+            Assembled version (Faroese) — labelled organs support vocabulary and identification.
+          </figcaption>
+        </figure>
+
+        <!-- Add more images by duplicating a <figure> block:
+        <figure>
+          <img src="images/puzzle/your-image.jpg" alt="Description">
+          <figcaption>Caption</figcaption>
+        </figure>
+        -->
+
+        <div class="carousel-nav">
+          <button class="carousel-btn" data-dir="prev" aria-label="Previous image">‹</button>
+          <button class="carousel-btn" data-dir="next" aria-label="Next image">›</button>
+        </div>
+        <div class="carousel-dots"></div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Simple reusable carousel
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel){
+    const slides = carousel.querySelectorAll('figure');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+    let index = 0;
+
+    // Create dots
+    slides.forEach(function(_, i){
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('data-index', i);
+      dot.setAttribute('type', 'button');
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    function showSlide(i){
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle('active', j === index));
+      dots.forEach((d, j) => d.classList.toggle('active', j === index));
+    }
+
+    carousel.addEventListener('click', function(e){
+      if (e.target.matches('.carousel-btn')){
+        const dir = e.target.getAttribute('data-dir');
+        showSlide(index + (dir === 'next' ? 1 : -1));
+      }
+      if (e.target.matches('.carousel-dot')){
+        const targetIndex = parseInt(e.target.getAttribute('data-index'), 10);
+        showSlide(targetIndex);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
