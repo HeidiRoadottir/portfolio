@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6FZ3BM7YMJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6FZ3BM7YMJ');
+  </script>
+
+  <meta charset="UTF-8" />
+  <title>Spin the Bias · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Spin the Bias — a playful interactive prototype that explores how structural bias can show up in healthcare systems, data, and decision-making." />
+
+  <style>
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
+    }
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
+    }
+
+    h1{
+      margin:10px 0 4px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
+    }
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:46rem;
+      margin-bottom:18px;
+      font-size:0.98rem;
+    }
+
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+        align-items:start;
+      }
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .hero-media{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#e5e7eb;
+      margin: 14px 0 18px;
+    }
+
+    .hero-media img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .pillrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#f3f4f6;
+      color:var(--text-muted);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--accent);
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    .btn:hover{ text-decoration:none; background:#f9fafb; }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+
+    .btn-primary:hover{
+      background:#0f172a;
+      border-color:#0f172a;
+    }
+
+    .fineprint{
+      font-size:0.86rem;
+      color:var(--text-muted);
+      margin-top:10px;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 0.9em;
+      background:#f3f4f6;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <a href="index.html#other" class="back">← Back</a>
+
+  <h1>Spin the Bias</h1>
+  <div class="meta">
+    Interactive prototype · Critical design / data storytelling · HTML/CSS/JS
+  </div>
+
+  <p class="hero-sub">
+    <strong>Spin the Bias</strong> is a playful, wheel-of-fortune–style interactive that explores how structural bias
+    can show up in healthcare systems, data practices, and decision-making. The wheel feels random — but the outcomes are
+    designed to highlight patterns: what repeats, what gets normalized, and what becomes “invisible” through routine.
+  </p>
+
+  <!-- Optional hero image (replace src with your actual file path) -->
+  <div class="hero-media" aria-label="Project preview image">
+    <img src="images/SpinTheBias/screenshot.png" alt="Spin the Bias — preview of the interactive wheel" />
+  </div>
+
+  <div class="pillrow" aria-label="Tags">
+    <span class="pill">Interactive explanation</span>
+    <span class="pill">Systems thinking</span>
+    <span class="pill">Healthcare & data</span>
+    <span class="pill">Canvas prototype</span>
+  </div>
+
+  <div class="btn-row">
+    <a class="btn btn-primary" href="https://heidiroadottir.github.io/spinthebias/" target="_blank" rel="noopener">
+      Open the interactive →
+    </a>
+    <a class="btn" href="https://github.com/heidiroadottir/spinthebias" target="_blank" rel="noopener">
+      View code on GitHub →
+    </a>
+  </div>
+
+  <p class="fineprint">
+    Note: This is a reflective prototype (not medical advice). The “system damage” and “trust meter” are intentionally simplified
+    to visualize how repeated small disparities can accumulate over time.
+  </p>
+
+  <div class="layout">
+    <div>
+
+      <div class="card">
+        <h2>Concept & intent</h2>
+        <p>
+          The project uses a familiar and approachable interaction — spinning a wheel — to create a small moment of surprise.
+          That surprise is then used to support reflection: when you spin multiple times, the outcomes start to feel less like
+          isolated events and more like a pattern.
+        </p>
+        <p>
+          The tone is intentionally light on the surface, but the structure is serious: each outcome explains
+          <strong>why it happens</strong>, <strong>what goes wrong</strong>, the <strong>real-world impact</strong>,
+          and <strong>what could improve it</strong>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>How the interaction communicates the idea</h2>
+        <ul>
+          <li><strong>Randomness as a metaphor:</strong> the wheel mirrors how bias can feel unpredictable at the individual level.</li>
+          <li><strong>Repetition reveals structure:</strong> multiple spins make recurring themes visible.</li>
+          <li><strong>Scoring makes accumulation tangible:</strong> “system damage” and the trust meter visualize gradual erosion over time.</li>
+          <li><strong>Consistent format:</strong> the same outcome structure supports comparison across categories.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>My role</h2>
+        <ul>
+          <li>Concept development and framing</li>
+          <li>Interaction design and UX writing</li>
+          <li>Implementation (single-file web prototype)</li>
+          <li>Visual design + accessibility choices (reduced motion, light/dark mode)</li>
+          <li>Testing and iteration (spin behaviour, pointer logic, text fitting)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Reflection</h2>
+        <p>
+          A key challenge was balancing tone and topic: the interface needed to be engaging without making light of lived experience.
+          I approached this by keeping the language concrete and respectful, while letting the playful mechanic function as an entry point.
+        </p>
+        <p>
+          The project also reinforced how “neutral” interface decisions (defaults, labels, metrics, feedback animations) influence
+          what users notice — and what they overlook.
+        </p>
+      </div>
+
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <h3>Project snapshot</h3>
+        <p><strong>Format:</strong> Web prototype</p>
+        <p><strong>Tools:</strong> HTML / CSS / JavaScript</p>
+        <p><strong>Interaction:</strong> Canvas wheel + scenario generator</p>
+        <p><strong>Features:</strong> onboarding modal, trust meter, system damage, reduced motion</p>
+      </div>
+
+      <div class="side-card">
+        <h3>Links</h3>
+        <p>
+          <a href="https://heidiroadottir.github.io/spinthebias/" target="_blank" rel="noopener">
+            Live interactive →
+          </a>
+        </p>
+        <p>
+          <a href="https://github.com/heidiroadottir/spinthebias" target="_blank" rel="noopener">
+            Source code →
+          </a>
+        </p>
+        <p style="margin-top:10px;">
+          Tip: In the interactive you can spin with <code>Space</code> / <code>Enter</code>.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Heidi Lindenskov Róadóttir
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
