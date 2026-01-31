@@ -1,1 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6FZ3BM7YMJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6FZ3BM7YMJ');
+  </script>
 
+  <meta charset="UTF-8" />
+  <title>Math Maze · Heidi Lindenskov Róadóttir</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Math Maze — a playful learning game for kids (ages 7–9) where you solve simple math problems to move through a maze." />
+
+  <style>
+    :root{
+      --bg:#f9fafb;
+      --card:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --accent:#111827;
+      --border:#e5e7eb;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text-main);
+      line-height:1.7;
+    }
+
+    main{
+      max-width:1040px;
+      margin:0 auto;
+      padding:28px 18px 60px;
+    }
+
+    a{color:var(--accent);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .back{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      display:inline-block;
+      margin-bottom:8px;
+    }
+
+    h1{
+      margin:10px 0 4px;
+      font-size:clamp(2.1rem,3vw,2.6rem);
+      font-weight:600;
+    }
+
+    .meta{
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:12px;
+    }
+
+    .hero-sub{
+      color:var(--text-muted);
+      max-width:46rem;
+      margin-bottom:18px;
+      font-size:0.98rem;
+    }
+
+    .layout{
+      display:grid;
+      gap:18px;
+      margin-top:16px;
+    }
+
+    @media(min-width:880px){
+      .layout{
+        grid-template-columns:minmax(0,3fr) minmax(0,2fr);
+        align-items:start;
+      }
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:16px;
+      margin-bottom:14px;
+      font-size:0.96rem;
+    }
+
+    .card h2{
+      margin:0 0 6px;
+      font-size:1.1rem;
+      font-weight:600;
+    }
+
+    .side-card{
+      background:#fff;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:14px;
+      font-size:0.9rem;
+      color:var(--text-muted);
+      margin-bottom:14px;
+    }
+
+    .side-card h3{
+      margin:0 0 6px;
+      font-size:1rem;
+      font-weight:600;
+      color:var(--accent);
+    }
+
+    .hero-media{
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:#e5e7eb;
+      margin: 14px 0 18px;
+    }
+
+    .hero-media img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    /* Optional embedded preview (iframe) */
+    .hero-media iframe{
+      width:100%;
+      height:min(70vh, 760px);
+      border:0;
+      display:block;
+      background:#070A1A;
+    }
+
+    .pillrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#f3f4f6;
+      color:var(--text-muted);
+    }
+
+    .btn-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--accent);
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+    }
+
+    .btn:hover{ text-decoration:none; background:#f9fafb; }
+
+    .btn-primary{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+
+    .btn-primary:hover{
+      background:#0f172a;
+      border-color:#0f172a;
+    }
+
+    .fineprint{
+      font-size:0.86rem;
+      color:var(--text-muted);
+      margin-top:10px;
+    }
+
+    footer{
+      margin-top:32px;
+      padding-top:10px;
+      border-top:1px solid var(--border);
+      font-size:0.8rem;
+      color:var(--text-muted);
+      text-align:center;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size: 0.9em;
+      background:#f3f4f6;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <a href="index.html#other" class="back">← Back</a>
+
+  <h1>Math Maze</h1>
+  <div class="meta">
+    Learning game · Kids (7–9) · HTML/CSS/JS
+  </div>
+
+  <!-- Optional hero image (replace src with your actual file path) -->
+  <!-- If you don't have a screenshot yet, you can remove this <img> and keep the iframe preview below -->
+  <div class="hero-media" aria-label="Project preview image">
+    <img src="images/mathmaze/mathmaze.png" alt="Math Maze — preview of the maze game" />
+  </div>
+
+  <!-- Optional: embedded live preview -->
+  <!-- If you prefer NOT to embed, remove this block -->
+  <div class="hero-media" aria-label="Live preview">
+    <iframe
+      src="https://heidiroadottir.github.io/math-maze-game/"
+      title="Math Maze — live preview"
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <p class="card">
+    <strong>Math Maze</strong> is a playful browser-based learning game for children (ages 7–9).
+    The player navigates a maze from a top-down view, but each move requires solving a simple
+    math problem (addition and subtraction). The game turns practice into progression:
+    solve → move → explore → reach the 🏁 finish tile.
+  </p>
+
+  <div class="pillrow" aria-label="Tags">
+    <span class="pill">Learning through play</span>
+    <span class="pill">Maze navigation</span>
+    <span class="pill">Math practice</span>
+    <span class="pill">Vanilla JS</span>
+  </div>
+
+  <div class="btn-row">
+    <a class="btn btn-primary" href="https://heidiroadottir.github.io/math-maze-game/" target="_blank" rel="noopener">
+      Play Math Maze →
+    </a>
+    <a class="btn" href="https://github.com/HeidiRoadottir/math-maze-game" target="_blank" rel="noopener">
+      View code on GitHub →
+    </a>
+  </div>
+
+  <p class="fineprint">
+    Note: This is a small educational game prototype. The math questions are intentionally simple
+    and designed to support practice through repetition and progression.
+  </p>
+
+  <div class="layout">
+    <div>
+
+      <div class="card">
+        <h2>Concept & intent</h2>
+        <p>
+          The project explores how small game mechanics can support learning: instead of drilling tasks,
+          the game uses the maze as motivation. Each correct answer unlocks a move, creating a gentle
+          reward loop where progress depends on understanding — not speed.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>How the interaction communicates the idea</h2>
+        <ul>
+          <li><strong>Move = earned:</strong> you can only move after answering correctly.</li>
+          <li><strong>Short questions:</strong> quick mental math keeps focus on play.</li>
+          <li><strong>Clear goal:</strong> the 🏁 finish tile signals completion immediately.</li>
+          <li><strong>Feedback:</strong> sound + confetti celebrates success and supports motivation.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>My role</h2>
+        <ul>
+          <li>Concept and game design (rules, level logic, difficulty)</li>
+          <li>UI/UX (onboarding, avatar picker, feedback flow)</li>
+          <li>Implementation (maze renderer, movement, modal logic)</li>
+          <li>Visual design (colors, tiles, finish line)</li>
+          <li>Testing and iteration (movement bugs, readability, responsiveness)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Reflection</h2>
+        <p>
+          A key focus was clarity: kids need immediate understanding of who they are, what to do,
+          and what “winning” looks like. I iterated on onboarding, visuals, and feedback to make the
+          interaction easy to grasp while still feeling playful.
+        </p>
+        <p>
+          Building the game also highlighted how small interface decisions (tile size, contrast, modal layout,
+          feedback timing) have a big impact on usability — especially for younger audiences.
+        </p>
+      </div>
+
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <h3>Project snapshot</h3>
+        <p><strong>Format:</strong> Web game</p>
+        <p><strong>Audience:</strong> Kids (7–9)</p>
+        <p><strong>Tools:</strong> HTML / CSS / JavaScript</p>
+        <p><strong>Interaction:</strong> Maze navigation + math modal</p>
+        <p><strong>Features:</strong> avatar picker, multi-level, sounds, confetti, finish tile</p>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<footer>
+  © <span id="year"></span> Heidi Lindenskov Róadóttir
+</footer>
+
+</body>
+</html>
